@@ -1,0 +1,15 @@
+com/configuration/rest/mapper/ConnectorMapper.class
+com/configuration/rest/service/JpaSubscriptionService.class
+com/configuration/rest/controller/SubscriptionController.class
+com/configuration/rest/dto/SubscriptionPropertyDTO.class
+com/configuration/rest/service/JpaConnectorService.class
+com/configuration/rest/controller/ClientController.class
+com/configuration/rest/dto/ConnectorDTO.class
+com/configuration/rest/service/JpaClientService.class
+com/configuration/ConfigurationApplication.class
+com/configuration/rest/dto/SubscriptionDTO.class
+com/configuration/rest/controller/ConnectorController.class
+com/configuration/rest/mapper/ClientMapper.class
+com/configuration/rest/mapper/SubscriptionPropertyMapper.class
+com/configuration/rest/dto/ClientDTO.class
+com/configuration/rest/mapper/SubscriptionMapper.class
