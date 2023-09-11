@@ -10,12 +10,24 @@ import com.storage.jpa.JpaConnectorMetadata;
 import com.storage.jpa.JpaSubscriptionProperty;
 import com.storage.repository.JpaConnectorMetadataRepository;
 
+/**
+ * Mapper class responsible for mapping between {@link JpaSubscriptionProperty}
+ * entities and {@link SubscriptionPropertyDTO} data transfer objects. This
+ * class provides methods to convert entities to DTOs and vice versa.
+ */
 @Component
 public class SubscriptionPropertyMapper {
 
 	@Autowired
-	private JpaConnectorMetadataRepository connectorMetadataRepository; // Your JpaConnector repository
+	private JpaConnectorMetadataRepository connectorMetadataRepository; // Your JpaConnectorMetadata repository
 
+	/**
+	 * Converts a {@link JpaSubscriptionProperty} entity to a
+	 * {@link SubscriptionPropertyDTO}.
+	 *
+	 * @param property The JpaSubscriptionProperty entity to be converted.
+	 * @return The corresponding SubscriptionPropertyDTO.
+	 */
 	public SubscriptionPropertyDTO toDto(JpaSubscriptionProperty property) {
 		SubscriptionPropertyDTO dto = new SubscriptionPropertyDTO();
 		dto.setId(property.getId().toString());
@@ -33,6 +45,15 @@ public class SubscriptionPropertyMapper {
 		return dto;
 	}
 
+	/**
+	 * Converts a {@link SubscriptionPropertyDTO} to a
+	 * {@link JpaSubscriptionProperty} entity.
+	 *
+	 * @param dto The SubscriptionPropertyDTO to be converted.
+	 * @return The corresponding JpaSubscriptionProperty entity.
+	 * @throws EntityNotFoundException If the referenced connector metadata is not
+	 *                                 found in the database.
+	 */
 	public JpaSubscriptionProperty toEntity(SubscriptionPropertyDTO dto) {
 		JpaSubscriptionProperty property = new JpaSubscriptionProperty();
 		property.setValues(dto.getValues());

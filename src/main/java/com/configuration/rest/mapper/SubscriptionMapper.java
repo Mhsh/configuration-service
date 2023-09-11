@@ -15,8 +15,14 @@ import com.storage.jpa.JpaSubscription;
 import com.storage.repository.JpaClientRepository;
 import com.storage.repository.JpaConnectorRepository;
 
+/**
+ * Mapper class responsible for mapping between {@link JpaSubscription} entities
+ * and {@link SubscriptionDTO} data transfer objects. This class provides
+ * methods to convert entities to DTOs and vice versa.
+ */
 @Component
 public class SubscriptionMapper {
+
 	@Autowired
 	private SubscriptionPropertyMapper propertyMapper;
 
@@ -26,6 +32,12 @@ public class SubscriptionMapper {
 	@Autowired
 	private JpaConnectorRepository connectorRepository; // Your JpaConnector repository
 
+	/**
+	 * Converts a {@link JpaSubscription} entity to a {@link SubscriptionDTO}.
+	 *
+	 * @param subscription The JpaSubscription entity to be converted.
+	 * @return The corresponding SubscriptionDTO.
+	 */
 	public SubscriptionDTO toDto(JpaSubscription subscription) {
 		SubscriptionDTO dto = new SubscriptionDTO();
 		dto.setId(subscription.getId().toString());
@@ -38,6 +50,14 @@ public class SubscriptionMapper {
 		return dto;
 	}
 
+	/**
+	 * Converts a {@link SubscriptionDTO} to a {@link JpaSubscription} entity.
+	 *
+	 * @param dto The SubscriptionDTO to be converted.
+	 * @return The corresponding JpaSubscription entity.
+	 * @throws EntityNotFoundException If the referenced client or connector is not
+	 *                                 found in the database.
+	 */
 	public JpaSubscription toEntity(SubscriptionDTO dto) {
 		JpaSubscription subscription = new JpaSubscription();
 		// Note: You may need to handle id conversion if needed

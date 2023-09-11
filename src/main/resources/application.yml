@@ -1,17 +1,19 @@
+# Server Configuration
 server:
   port: 8081
   servlet:
-    context-path: /config
+    context-path: /config  # Base path for all application endpoints
+
+# Spring Configuration
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ingestion
-    username: ingestion
-    password: ingestion
+    url: jdbc:postgresql://localhost:5432/ingestion  # Database connection URL
+    username: ingestion  # Database username
+    password: ingestion  # Database password
     driverClassName: org.postgresql.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  # PostgreSQL database dialect
     hibernate:
-      ddl-auto: update
-    show-sql: false
-
+      ddl-auto: update  # Hibernate schema generation strategy (update existing schema)
+    show-sql: false  # Whether to show SQL statements in logs (set to 'false' for production)
