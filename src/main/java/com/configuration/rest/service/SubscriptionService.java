@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.configuration.rest.dto.SubscriptionDTO;
 import com.configuration.rest.mapper.SubscriptionMapper;
-import com.configuration.rest.mapper.SubscriptionPropertyMapper;
 import com.storage.jpa.JpaSubscription;
 import com.storage.jpa.JpaSubscriptionProperty;
 import com.storage.repository.JpaSubscriptionRepository;
@@ -26,9 +25,6 @@ public class SubscriptionService {
 
 	@Autowired
 	private SubscriptionMapper subscriptionMapper;
-
-	@Autowired
-	private SubscriptionPropertyMapper propertyMapper;
 
 	public List<SubscriptionDTO> getAllSubscriptions() {
 		List<JpaSubscription> subscriptions = subscriptionRepository.findAll();
@@ -58,7 +54,7 @@ public class SubscriptionService {
 		JpaSubscription updatedSubscription = subscriptionMapper.toEntity(updatedSubscriptionDTO);
 		updatedSubscription.setId(id);
 
-		JpaSubscription existingSubscription = subscriptionRepository.getOne(id);
+		JpaSubscription existingSubscription = subscriptionRepository.getReferenceById(id);
 
 		// Update the properties collection with the existing properties, if any
 		Set<JpaSubscriptionProperty> existingProperties = existingSubscription.getProperties();

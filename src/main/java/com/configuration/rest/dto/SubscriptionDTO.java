@@ -8,7 +8,6 @@ public class SubscriptionDTO {
 	private String clientId; // You can use the client ID as a reference
 	private String connectorId; // You can use the connector ID as a reference
 	private Set<SubscriptionPropertyDTO> properties;
-	private String location;
 	private Integer duration;
 	private Date nextSchedule;
 
@@ -42,14 +41,6 @@ public class SubscriptionDTO {
 
 	public void setProperties(Set<SubscriptionPropertyDTO> properties) {
 		this.properties = properties;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
 	}
 
 	public Integer getDuration() {

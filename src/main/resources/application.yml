@@ -8,10 +8,10 @@ spring:
     username: ingestion
     password: ingestion
     driverClassName: org.postgresql.Driver
+
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-    show-sql: true
-    open-in-view: false
+    show-sql: false
 

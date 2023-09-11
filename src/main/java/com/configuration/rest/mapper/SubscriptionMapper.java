@@ -32,7 +32,6 @@ public class SubscriptionMapper {
 		dto.setClientId(subscription.getClient().getId());
 		dto.setConnectorId(subscription.getConnector().getId().toString());
 		dto.setProperties(subscription.getProperties().stream().map(propertyMapper::toDto).collect(Collectors.toSet()));
-		dto.setLocation(subscription.getLocation());
 		dto.setDuration(subscription.getDuration());
 		dto.setNextSchedule(subscription.getNextSchedule());
 		// Map other fields as needed
@@ -56,7 +55,6 @@ public class SubscriptionMapper {
 
 		subscription
 				.setProperties(dto.getProperties().stream().map(propertyMapper::toEntity).collect(Collectors.toSet()));
-		subscription.setLocation(dto.getLocation());
 		subscription.setDuration(dto.getDuration());
 		subscription.setNextSchedule(dto.getNextSchedule());
 		// Map other fields as needed

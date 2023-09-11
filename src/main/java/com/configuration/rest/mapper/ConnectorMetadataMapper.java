@@ -2,9 +2,7 @@ package com.configuration.rest.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.configuration.rest.dto.ConnectorDTO;
 import com.configuration.rest.dto.ConnectorMetadataDTO;
-import com.storage.jpa.JpaConnector;
 import com.storage.jpa.JpaConnectorMetadata;
 
 @Component
