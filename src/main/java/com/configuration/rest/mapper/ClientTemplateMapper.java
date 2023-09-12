@@ -1,9 +1,14 @@
 package com.configuration.rest.mapper;
 
+import javax.persistence.EntityNotFoundException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.configuration.rest.dto.ClientTemplateDTO;
+import com.storage.jpa.JpaClient;
 import com.storage.jpa.JpaClientTemplate;
+import com.storage.repository.JpaClientRepository;
 
 /**
  * Mapper class responsible for converting between {@link JpaClientTemplate}
@@ -11,6 +16,9 @@ import com.storage.jpa.JpaClientTemplate;
  */
 @Component
 public class ClientTemplateMapper {
+
+	@Autowired
+	private JpaClientRepository clientRepository; // Your JpaClient repository
 
 	/**
 	 * Converts a {@link JpaClientTemplate} entity to a {@link ClientTemplateDTO}
@@ -33,10 +41,14 @@ public class ClientTemplateMapper {
 	 * @param dto The {@link ClientTemplateDTO} DTO to be converted.
 	 * @return A {@link JpaClientTemplate} entity representing the converted DTO.
 	 */
-	public JpaClientTemplate toEntity(ClientTemplateDTO dto) {
+	public JpaClientTemplate toEntity(ClientTemplateDTO dto, String clientId) {
 		JpaClientTemplate entity = new JpaClientTemplate();
 		entity.setId(dto.getId());
 		entity.setTemplate(dto.getTemplate());
+		// Load client and connector entities from the database based on their IDs
+		JpaClient client = clientRepository.findById(clientId)
+				.orElseThrow(() -> new EntityNotFoundException("Client not found with ID: " + clientId));
+		entity.setClient(client);
 		return entity;
 	}
 }

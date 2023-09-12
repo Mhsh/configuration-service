@@ -68,7 +68,7 @@ public class ClientTemplateService {
 	 *         or an empty list if none are found.
 	 */
 
-	public List<JpaClientTemplate> findAllByClientId(Long clientId) {
+	public List<JpaClientTemplate> findAllByClientId(String clientId) {
 		// Use the repository to find client templates by clientId
 		return clientTemplateRepository.findAllByClient_Id(clientId);
 	}

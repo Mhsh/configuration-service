@@ -41,8 +41,8 @@ public class ClientTemplateController {
 	 * @return A ResponseEntity containing a list of client templates if found, or
 	 *         an empty list if none are found.
 	 */
-	@GetMapping("/all")
-	public ResponseEntity<List<ClientTemplateDTO>> getAllClientTemplates(@PathVariable Long clientId) {
+	@GetMapping
+	public ResponseEntity<List<ClientTemplateDTO>> getAllClientTemplates(@PathVariable String clientId) {
 		List<JpaClientTemplate> templates = clientTemplateService.findAllByClientId(clientId);
 		List<ClientTemplateDTO> dtos = templates.stream().map(clientTemplateMapper::toDTO).collect(Collectors.toList());
 		return ResponseEntity.ok(dtos);
@@ -74,8 +74,9 @@ public class ClientTemplateController {
 	 *         Created status.
 	 */
 	@PostMapping
-	public ResponseEntity<ClientTemplateDTO> createClientTemplate(@RequestBody ClientTemplateDTO dto) {
-		JpaClientTemplate entity = clientTemplateMapper.toEntity(dto);
+	public ResponseEntity<ClientTemplateDTO> createClientTemplate(@PathVariable String clientId,
+			@RequestBody ClientTemplateDTO dto) {
+		JpaClientTemplate entity = clientTemplateMapper.toEntity(dto, clientId);
 		JpaClientTemplate createdEntity = clientTemplateService.create(entity);
 		ClientTemplateDTO createdDTO = clientTemplateMapper.toDTO(createdEntity);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdDTO);
@@ -90,11 +91,11 @@ public class ClientTemplateController {
 	 *         a 404 Not Found status if not found.
 	 */
 	@PutMapping("/{id}")
-	public ResponseEntity<ClientTemplateDTO> updateClientTemplate(@PathVariable Long id,
+	public ResponseEntity<ClientTemplateDTO> updateClientTemplate(@PathVariable Long id, @PathVariable String clientId,
 			@RequestBody ClientTemplateDTO dto) {
 		JpaClientTemplate existingEntity = clientTemplateService.findById(id);
 		if (existingEntity != null) {
-			JpaClientTemplate updatedEntity = clientTemplateMapper.toEntity(dto);
+			JpaClientTemplate updatedEntity = clientTemplateMapper.toEntity(dto, clientId);
 			updatedEntity.setId(id);
 			JpaClientTemplate updatedTemplate = clientTemplateService.update(updatedEntity);
 			ClientTemplateDTO updatedDTO = clientTemplateMapper.toDTO(updatedTemplate);
