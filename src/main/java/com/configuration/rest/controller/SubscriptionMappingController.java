@@ -23,8 +23,8 @@ import com.configuration.rest.service.MappingService;
  * deleting mappings.
  */
 @RestController
-@RequestMapping("/subscriptions/{subscriptionId}/mappings")
-public class MappingController {
+@RequestMapping("/subscription/{subscriptionId}/mappings")
+public class SubscriptionMappingController {
 
 	@Autowired
 	private MappingService mappingService;

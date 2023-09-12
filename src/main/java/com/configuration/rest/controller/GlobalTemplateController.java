@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.configuration.rest.dto.TemplateDTO;
+import com.configuration.rest.dto.SubscriptionTemplateDTO;
 import com.configuration.rest.service.TemplateService;
 
 /**
  * Controller class for managing templates through REST endpoints.
  */
 @RestController
-@RequestMapping("/templates")
-public class TemplateController {
+@RequestMapping("/bb/templates")
+public class GlobalTemplateController {
 
 	private final TemplateService templateService;
 
@@ -28,7 +28,7 @@ public class TemplateController {
 	 *
 	 * @param templateService The service responsible for template operations.
 	 */
-	public TemplateController(TemplateService templateService) {
+	public GlobalTemplateController(TemplateService templateService) {
 		this.templateService = templateService;
 	}
 
@@ -39,7 +39,7 @@ public class TemplateController {
 	 * @return The TemplateDTO representing the retrieved template.
 	 */
 	@GetMapping("/{id}")
-	public TemplateDTO getTemplateById(@PathVariable String id) {
+	public SubscriptionTemplateDTO getTemplateById(@PathVariable String id) {
 		return templateService.getTemplateById(id);
 	}
 
@@ -49,7 +49,7 @@ public class TemplateController {
 	 * @return A list of TemplateDTOs representing all available templates.
 	 */
 	@GetMapping
-	public List<TemplateDTO> getAllTemplates() {
+	public List<SubscriptionTemplateDTO> getAllTemplates() {
 		return templateService.getAllTemplates();
 	}
 
@@ -60,7 +60,7 @@ public class TemplateController {
 	 * @return The TemplateDTO representing the newly created template.
 	 */
 	@PostMapping
-	public TemplateDTO createTemplate(@RequestBody TemplateDTO templateDTO) {
+	public SubscriptionTemplateDTO createTemplate(@RequestBody SubscriptionTemplateDTO templateDTO) {
 		return templateService.createTemplate(templateDTO);
 	}
 
@@ -73,7 +73,8 @@ public class TemplateController {
 	 * @return The TemplateDTO representing the updated template.
 	 */
 	@PutMapping("/{id}")
-	public TemplateDTO updateTemplate(@PathVariable String id, @RequestBody TemplateDTO updatedTemplateDTO) {
+	public SubscriptionTemplateDTO updateTemplate(@PathVariable String id,
+			@RequestBody SubscriptionTemplateDTO updatedTemplateDTO) {
 		return templateService.updateTemplate(id, updatedTemplateDTO);
 	}
 
