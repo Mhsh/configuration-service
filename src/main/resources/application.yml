@@ -15,5 +15,5 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect  # PostgreSQL database dialect
     hibernate:
-      ddl-auto: create-drop # Hibernate schema generation strategy (update existing schema)
+      ddl-auto: validate # Hibernate schema generation strategy (update existing schema)
     show-sql: false  # Whether to show SQL statements in logs (set to 'false' for production)
