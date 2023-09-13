@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.configuration.rest.dto.SubscriptionTemplateDTO;
 import com.configuration.rest.service.TemplateService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 /**
  * Controller class for managing templates through REST endpoints.
  */
@@ -39,6 +41,7 @@ public class GlobalTemplateController {
 	 * @return The TemplateDTO representing the retrieved template.
 	 */
 	@GetMapping("/{id}")
+	@Operation(tags = { "Templates" })
 	public SubscriptionTemplateDTO getTemplateById(@PathVariable String id) {
 		return templateService.getTemplateById(id);
 	}
@@ -49,6 +52,7 @@ public class GlobalTemplateController {
 	 * @return A list of TemplateDTOs representing all available templates.
 	 */
 	@GetMapping
+	@Operation(tags = { "Templates" })
 	public List<SubscriptionTemplateDTO> getAllTemplates() {
 		return templateService.getAllTemplates();
 	}
@@ -60,6 +64,7 @@ public class GlobalTemplateController {
 	 * @return The TemplateDTO representing the newly created template.
 	 */
 	@PostMapping
+	@Operation(tags = { "Templates" })
 	public SubscriptionTemplateDTO createTemplate(@RequestBody SubscriptionTemplateDTO templateDTO) {
 		return templateService.createTemplate(templateDTO);
 	}
@@ -73,6 +78,7 @@ public class GlobalTemplateController {
 	 * @return The TemplateDTO representing the updated template.
 	 */
 	@PutMapping("/{id}")
+	@Operation(tags = { "Templates" })
 	public SubscriptionTemplateDTO updateTemplate(@PathVariable String id,
 			@RequestBody SubscriptionTemplateDTO updatedTemplateDTO) {
 		return templateService.updateTemplate(id, updatedTemplateDTO);
@@ -84,6 +90,7 @@ public class GlobalTemplateController {
 	 * @param id The identifier of the template to delete.
 	 */
 	@DeleteMapping("/{id}")
+	@Operation(tags = { "Templates" })
 	public void deleteTemplate(@PathVariable String id) {
 		templateService.deleteTemplate(id);
 	}

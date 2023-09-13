@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.configuration.rest.dto.MappingItemDTO;
 import com.configuration.rest.service.MappingService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 /**
  * REST Controller for managing mappings associated with subscriptions. This
  * controller provides endpoints for creating, retrieving, updating, and
@@ -38,6 +40,7 @@ public class SubscriptionMappingController {
 	 *         201 (Created).
 	 */
 	@PostMapping
+	@Operation(tags = { "SubscriptionMapping" })
 	public ResponseEntity<List<MappingItemDTO>> createMappings(@PathVariable Long subscriptionId,
 			@RequestBody List<MappingItemDTO> mappingDTOs) {
 		List<MappingItemDTO> createdMappings = mappingService.createMappings(subscriptionId, mappingDTOs);
@@ -53,6 +56,7 @@ public class SubscriptionMappingController {
 	 *         code 200 (OK).
 	 */
 	@GetMapping("/{mappingId}")
+	@Operation(tags = { "SubscriptionMapping" })
 	public ResponseEntity<MappingItemDTO> getMapping(@PathVariable Long subscriptionId, @PathVariable Long mappingId) {
 		MappingItemDTO mapping = mappingService.getMapping(mappingId);
 		return new ResponseEntity<>(mapping, HttpStatus.OK);
@@ -66,6 +70,7 @@ public class SubscriptionMappingController {
 	 *         200 (OK).
 	 */
 	@GetMapping
+	@Operation(tags = { "SubscriptionMapping" })
 	public ResponseEntity<List<MappingItemDTO>> getAllMappings(@PathVariable Long subscriptionId) {
 		List<MappingItemDTO> mappings = mappingService.getAllMappings(subscriptionId);
 		return new ResponseEntity<>(mappings, HttpStatus.OK);
@@ -81,6 +86,7 @@ public class SubscriptionMappingController {
 	 *         200 (OK).
 	 */
 	@PutMapping("/{mappingId}")
+	@Operation(tags = { "SubscriptionMapping" })
 	public ResponseEntity<MappingItemDTO> updateMapping(@PathVariable Long subscriptionId, @PathVariable Long mappingId,
 			@RequestBody MappingItemDTO updatedMappingDTO) {
 		MappingItemDTO updatedMapping = mappingService.updateMapping(mappingId, updatedMappingDTO);
@@ -96,6 +102,7 @@ public class SubscriptionMappingController {
 	 *         successful deletion.
 	 */
 	@DeleteMapping("/{mappingId}")
+	@Operation(tags = { "SubscriptionMapping" })
 	public ResponseEntity<Void> deleteMapping(@PathVariable Long subscriptionId, @PathVariable Long mappingId) {
 		mappingService.deleteMapping(mappingId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

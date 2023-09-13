@@ -20,6 +20,8 @@ import com.configuration.rest.mapper.ClientTemplateMapper;
 import com.configuration.rest.service.ClientTemplateService;
 import com.storage.jpa.JpaClientTemplate;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 /**
  * The `ClientTemplateController` class handles HTTP requests related to client
  * templates.
@@ -42,6 +44,7 @@ public class ClientTemplateController {
 	 *         an empty list if none are found.
 	 */
 	@GetMapping
+	@Operation(tags = { "ClientTemplate" })
 	public ResponseEntity<List<ClientTemplateDTO>> getAllClientTemplates(@PathVariable String clientId) {
 		List<JpaClientTemplate> templates = clientTemplateService.findAllByClientId(clientId);
 		List<ClientTemplateDTO> dtos = templates.stream().map(clientTemplateMapper::toDTO).collect(Collectors.toList());
@@ -56,6 +59,7 @@ public class ClientTemplateController {
 	 *         Not Found status if not found.
 	 */
 	@GetMapping("/{id}")
+	@Operation(tags = { "ClientTemplate" })
 	public ResponseEntity<ClientTemplateDTO> getClientTemplate(@PathVariable Long id) {
 		JpaClientTemplate template = clientTemplateService.findById(id);
 		if (template != null) {
@@ -74,6 +78,7 @@ public class ClientTemplateController {
 	 *         Created status.
 	 */
 	@PostMapping
+	@Operation(tags = { "ClientTemplate" })
 	public ResponseEntity<ClientTemplateDTO> createClientTemplate(@PathVariable String clientId,
 			@RequestBody ClientTemplateDTO dto) {
 		JpaClientTemplate entity = clientTemplateMapper.toEntity(dto, clientId);
@@ -91,6 +96,7 @@ public class ClientTemplateController {
 	 *         a 404 Not Found status if not found.
 	 */
 	@PutMapping("/{id}")
+	@Operation(tags = { "ClientTemplate" })
 	public ResponseEntity<ClientTemplateDTO> updateClientTemplate(@PathVariable Long id, @PathVariable String clientId,
 			@RequestBody ClientTemplateDTO dto) {
 		JpaClientTemplate existingEntity = clientTemplateService.findById(id);
@@ -114,6 +120,7 @@ public class ClientTemplateController {
 	 *         found.
 	 */
 	@DeleteMapping("/{id}")
+	@Operation(tags = { "ClientTemplate" })
 	public ResponseEntity<Void> deleteClientTemplate(@PathVariable Long id) {
 		JpaClientTemplate template = clientTemplateService.findById(id);
 		if (template != null) {

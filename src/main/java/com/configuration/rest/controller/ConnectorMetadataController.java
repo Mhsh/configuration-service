@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.configuration.rest.service.ConnectorMetadataService;
 import com.storage.jpa.JpaConnectorMetadata;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 /**
  * REST Controller for managing connector metadata operations. This controller
  * provides endpoints for creating, retrieving, updating, and deleting connector
@@ -35,6 +37,7 @@ public class ConnectorMetadataController {
 	 *         status code 201 (Created).
 	 */
 	@PostMapping
+	@Operation(tags = { "ConnectorMetadata" })
 	public ResponseEntity<JpaConnectorMetadata> createConnectorMetadata(
 			@RequestBody JpaConnectorMetadata connectorMetadata) {
 		JpaConnectorMetadata createdConnectorMetadata = connectorMetadataService
@@ -51,6 +54,7 @@ public class ConnectorMetadataController {
 	 *         not found.
 	 */
 	@GetMapping("/{id}")
+	@Operation(tags = { "ConnectorMetadata" })
 	public ResponseEntity<JpaConnectorMetadata> getConnectorMetadataById(@PathVariable Long id) {
 		JpaConnectorMetadata connectorMetadata = connectorMetadataService.getConnectorMetadataById(id);
 		if (connectorMetadata != null) {
@@ -70,6 +74,7 @@ public class ConnectorMetadataController {
 	 *         if the original metadata was not found.
 	 */
 	@PutMapping("/{id}")
+	@Operation(tags = { "ConnectorMetadata" })
 	public ResponseEntity<JpaConnectorMetadata> updateConnectorMetadata(@PathVariable Long id,
 			@RequestBody JpaConnectorMetadata connectorMetadata) {
 		JpaConnectorMetadata updatedConnectorMetadata = connectorMetadataService.updateConnectorMetadata(id,
@@ -89,6 +94,7 @@ public class ConnectorMetadataController {
 	 *         or HTTP status code 404 (Not Found) if the metadata was not found.
 	 */
 	@DeleteMapping("/{id}")
+	@Operation(tags = { "ConnectorMetadata" })
 	public ResponseEntity<Void> deleteConnectorMetadata(@PathVariable Long id) {
 		boolean deleted = connectorMetadataService.deleteConnectorMetadata(id);
 		if (deleted) {

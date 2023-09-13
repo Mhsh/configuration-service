@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.configuration.rest.dto.SubscriptionDTO;
 import com.configuration.rest.service.SubscriptionService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 /**
  * Controller class for managing subscription entities through REST endpoints.
  */
@@ -32,6 +34,7 @@ public class SubscriptionController {
 	 * @return A list of SubscriptionDTOs representing all available subscriptions.
 	 */
 	@GetMapping
+	@Operation(tags = { "Subscription" })
 	public List<SubscriptionDTO> getAllSubscriptions() {
 		return subscriptionService.getAllSubscriptions();
 	}
@@ -44,6 +47,7 @@ public class SubscriptionController {
 	 *         subscription, or empty if not found.
 	 */
 	@GetMapping("/{id}")
+	@Operation(tags = { "Subscription" })
 	public Optional<SubscriptionDTO> getSubscriptionById(@PathVariable Long id) {
 		return subscriptionService.getSubscriptionById(id);
 	}
@@ -56,6 +60,7 @@ public class SubscriptionController {
 	 * @return The SubscriptionDTO representing the newly created subscription.
 	 */
 	@PostMapping
+	@Operation(tags = { "Subscription" })
 	public SubscriptionDTO createSubscription(@RequestBody SubscriptionDTO subscriptionDTO) {
 		return subscriptionService.createSubscription(subscriptionDTO);
 	}
@@ -69,6 +74,7 @@ public class SubscriptionController {
 	 * @return The SubscriptionDTO representing the updated subscription.
 	 */
 	@PutMapping("/{id}")
+	@Operation(tags = { "Subscription" })
 	public SubscriptionDTO updateSubscription(@PathVariable Long id,
 			@RequestBody SubscriptionDTO updatedSubscriptionDTO) {
 		return subscriptionService.updateSubscription(id, updatedSubscriptionDTO);
@@ -80,6 +86,7 @@ public class SubscriptionController {
 	 * @param id The identifier of the subscription to delete.
 	 */
 	@DeleteMapping("/{id}")
+	@Operation(tags = { "Subscription" })
 	public void deleteSubscription(@PathVariable Long id) {
 		subscriptionService.deleteSubscription(id);
 	}

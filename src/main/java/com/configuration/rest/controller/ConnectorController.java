@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.configuration.rest.dto.ConnectorDTO;
 import com.configuration.rest.service.ConnectorService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 /**
  * REST Controller for managing connector operations. This controller provides
  * endpoints for creating, retrieving, updating, and deleting connectors.
@@ -33,6 +35,7 @@ public class ConnectorController {
 	 * @return A list of ConnectorDTOs representing all connectors.
 	 */
 	@GetMapping
+	@Operation(tags = { "Connector" })
 	public List<ConnectorDTO> getAllConnectors() {
 		return connectorService.getAllConnectors();
 	}
@@ -45,6 +48,7 @@ public class ConnectorController {
 	 *         empty Optional if not found.
 	 */
 	@GetMapping("/{id}")
+	@Operation(tags = { "Connector" })
 	public Optional<ConnectorDTO> getConnectorById(@PathVariable String id) {
 		return connectorService.getConnectorById(id);
 	}
@@ -56,6 +60,7 @@ public class ConnectorController {
 	 * @return The created ConnectorDTO.
 	 */
 	@PostMapping
+	@Operation(tags = { "Connector" })
 	public ConnectorDTO createConnector(@RequestBody ConnectorDTO connectorDTO) {
 		return connectorService.createConnector(connectorDTO);
 	}
@@ -69,6 +74,7 @@ public class ConnectorController {
 	 *         connector was not found.
 	 */
 	@PutMapping("/{id}")
+	@Operation(tags = { "Connector" })
 	public ConnectorDTO updateConnector(@PathVariable String id, @RequestBody ConnectorDTO updatedConnectorDTO) {
 		return connectorService.updateConnector(id, updatedConnectorDTO);
 	}
@@ -79,6 +85,7 @@ public class ConnectorController {
 	 * @param id The ID of the connector to delete.
 	 */
 	@DeleteMapping("/{id}")
+	@Operation(tags = { "Connector" })
 	public void deleteConnector(@PathVariable String id) {
 		connectorService.deleteConnector(id);
 	}

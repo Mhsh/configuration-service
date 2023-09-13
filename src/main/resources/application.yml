@@ -17,3 +17,8 @@ spring:
     hibernate:
       ddl-auto: validate # Hibernate schema generation strategy (update existing schema)
     show-sql: false  # Whether to show SQL statements in logs (set to 'false' for production)
+    
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
