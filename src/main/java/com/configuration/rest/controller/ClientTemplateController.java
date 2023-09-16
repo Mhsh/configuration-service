@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,7 +78,7 @@ public class ClientTemplateController {
 	 * @return A ResponseEntity containing the created client template and a 201
 	 *         Created status.
 	 */
-	@PostMapping
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(tags = { "ClientTemplate" })
 	public ResponseEntity<ClientTemplateDTO> createClientTemplate(@PathVariable String clientId,
 			@RequestBody ClientTemplateDTO dto) {

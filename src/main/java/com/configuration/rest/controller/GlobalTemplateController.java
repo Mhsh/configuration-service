@@ -2,6 +2,7 @@ package com.configuration.rest.controller;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,7 +64,7 @@ public class GlobalTemplateController {
 	 * @param templateDTO The TemplateDTO containing the data for the new template.
 	 * @return The TemplateDTO representing the newly created template.
 	 */
-	@PostMapping
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(tags = { "Templates" })
 	public SubscriptionTemplateDTO createTemplate(@RequestBody SubscriptionTemplateDTO templateDTO) {
 		return templateService.createTemplate(templateDTO);

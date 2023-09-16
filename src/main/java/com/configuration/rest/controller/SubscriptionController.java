@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,7 +60,7 @@ public class SubscriptionController {
 	 *                        subscription.
 	 * @return The SubscriptionDTO representing the newly created subscription.
 	 */
-	@PostMapping
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(tags = { "Subscription" })
 	public SubscriptionDTO createSubscription(@RequestBody SubscriptionDTO subscriptionDTO) {
 		return subscriptionService.createSubscription(subscriptionDTO);

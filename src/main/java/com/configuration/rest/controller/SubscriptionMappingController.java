@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +40,7 @@ public class SubscriptionMappingController {
 	 * @return A ResponseEntity containing the created mappings and HTTP status code
 	 *         201 (Created).
 	 */
-	@PostMapping
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(tags = { "SubscriptionMapping" })
 	public ResponseEntity<List<MappingItemDTO>> createMappings(@PathVariable Long subscriptionId,
 			@RequestBody List<MappingItemDTO> mappingDTOs) {
