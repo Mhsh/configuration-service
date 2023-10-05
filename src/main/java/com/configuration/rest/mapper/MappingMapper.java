@@ -42,6 +42,7 @@ public class MappingMapper {
 		dto.setSourcekey(entity.getSourcekey());
 		dto.setInternalkey(entity.getInternalkey());
 		dto.setType(entity.getType());
+		dto.setSubscriptionId(entity.getSubscription().getId());
 		return dto;
 	}
 }

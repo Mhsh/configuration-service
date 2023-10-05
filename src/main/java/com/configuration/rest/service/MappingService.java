@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.hibernate.hql.spi.id.inline.InlineIdsSubSelectValueListBulkIdStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.configuration.rest.dto.MappingDTO;
 import com.configuration.rest.dto.MappingItemDTO;
 import com.configuration.rest.mapper.MappingMapper;
 import com.storage.jpa.JpaMapping;
@@ -43,7 +45,7 @@ public class MappingService {
 	 * @throws EntityNotFoundException If the subscription with the given ID is not
 	 *                                 found.
 	 */
-	public List<MappingItemDTO> createMappings(Long subscriptionId, List<MappingItemDTO> mappingDTOs) {
+	public MappingDTO createMappings(Long subscriptionId, List<MappingItemDTO> mappingDTOs) {
 		Optional<JpaSubscription> subscriptionOptional = subscriptionRepository.findById(subscriptionId);
 
 		if (subscriptionOptional.isPresent()) {
@@ -51,7 +53,8 @@ public class MappingService {
 			List<JpaMapping> mappingEntities = mappingDTOs.stream()
 					.map(dto -> mappingMapper.toEntity(dto, subscription)).collect(Collectors.toList());
 			List<JpaMapping> savedMappings = jpaMappingRepository.saveAll(mappingEntities);
-			return savedMappings.stream().map(mappingMapper::toDTO).collect(Collectors.toList());
+			return createMappingDTO(savedMappings.stream().map(mappingMapper::toDTO).collect(Collectors.toList()),
+					subscriptionId);
 		} else {
 			throw new EntityNotFoundException("Subscription not found with ID: " + subscriptionId);
 		}
@@ -65,59 +68,16 @@ public class MappingService {
 	 * @throws EntityNotFoundException If the mapping with the given ID is not
 	 *                                 found.
 	 */
-	public MappingItemDTO getMapping(Long mappingId) {
-		Optional<JpaMapping> mappingOptional = jpaMappingRepository.findById(mappingId);
-
-		if (mappingOptional.isPresent()) {
-			JpaMapping mapping = mappingOptional.get();
-			return mappingMapper.toDTO(mapping);
-		} else {
-			throw new EntityNotFoundException("Mapping not found with ID: " + mappingId);
-		}
-	}
-
-	/**
-	 * Retrieves all mappings for a given subscription.
-	 *
-	 * @param subscriptionId The ID of the subscription for which mappings are
-	 *                       retrieved.
-	 * @return A list of mapping DTOs for the specified subscription.
-	 * @throws EntityNotFoundException If the subscription with the given ID is not
-	 *                                 found.
-	 */
-	public List<MappingItemDTO> getAllMappings(Long subscriptionId) {
+	public MappingDTO getMappingBySubscription(Long subscriptionId) {
 		Optional<JpaSubscription> subscriptionOptional = subscriptionRepository.findById(subscriptionId);
 
 		if (subscriptionOptional.isPresent()) {
 			JpaSubscription subscription = subscriptionOptional.get();
 			List<JpaMapping> mappings = jpaMappingRepository.findBySubscription(subscription);
-			return mappings.stream().map(mappingMapper::toDTO).collect(Collectors.toList());
+			return createMappingDTO(mappings.stream().map(mappingMapper::toDTO).collect(Collectors.toList()),
+					subscriptionId);
 		} else {
 			throw new EntityNotFoundException("Subscription not found with ID: " + subscriptionId);
-		}
-	}
-
-	/**
-	 * Updates an existing mapping by its ID.
-	 *
-	 * @param mappingId         The ID of the mapping to update.
-	 * @param updatedMappingDTO The updated mapping DTO.
-	 * @return The updated mapping DTO if it exists, or throws an exception if not
-	 *         found.
-	 * @throws EntityNotFoundException If the mapping with the given ID is not
-	 *                                 found.
-	 */
-	public MappingItemDTO updateMapping(Long mappingId, MappingItemDTO updatedMappingDTO) {
-		Optional<JpaMapping> mappingOptional = jpaMappingRepository.findById(mappingId);
-
-		if (mappingOptional.isPresent()) {
-			JpaMapping existingMapping = mappingOptional.get();
-			JpaMapping updatedMapping = mappingMapper.toEntity(updatedMappingDTO, existingMapping.getSubscription());
-			updatedMapping.setId(mappingId);
-			JpaMapping savedMapping = jpaMappingRepository.save(updatedMapping);
-			return mappingMapper.toDTO(savedMapping);
-		} else {
-			throw new EntityNotFoundException("Mapping not found with ID: " + mappingId);
 		}
 	}
 
@@ -128,10 +88,20 @@ public class MappingService {
 	 * @throws EntityNotFoundException If the mapping with the given ID is not
 	 *                                 found.
 	 */
-	public void deleteMapping(Long mappingId) {
-		if (!jpaMappingRepository.existsById(mappingId)) {
-			throw new EntityNotFoundException("Mapping not found with ID: " + mappingId);
+	public void deleteMappingBySubscription(Long subscriptionId) {
+		Optional<JpaSubscription> subscriptionOptional = subscriptionRepository.findById(subscriptionId);
+
+		if (subscriptionOptional.isPresent()) {
+			jpaMappingRepository.deleteBySubscription(subscriptionOptional.get());
+		} else {
+			throw new EntityNotFoundException("Subscription not found with ID: " + subscriptionId);
 		}
-		jpaMappingRepository.deleteById(mappingId);
+	}
+
+	private MappingDTO createMappingDTO(List<MappingItemDTO> mappingItems, Long subscriptionId) {
+		MappingDTO mappingDTO = new MappingDTO();
+		mappingDTO.setMappings(mappingItems);
+		mappingDTO.setSubscriptionId(subscriptionId);
+		return mappingDTO;
 	}
 }

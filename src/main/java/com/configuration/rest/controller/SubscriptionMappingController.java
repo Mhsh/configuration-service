@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.configuration.rest.dto.MappingDTO;
 import com.configuration.rest.dto.MappingItemDTO;
 import com.configuration.rest.service.MappingService;
 
@@ -42,25 +43,10 @@ public class SubscriptionMappingController {
 	 */
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<List<MappingItemDTO>> createMappings(@PathVariable Long subscriptionId,
+	public ResponseEntity<MappingDTO> createMappings(@PathVariable Long subscriptionId,
 			@RequestBody List<MappingItemDTO> mappingDTOs) {
-		List<MappingItemDTO> createdMappings = mappingService.createMappings(subscriptionId, mappingDTOs);
+		MappingDTO createdMappings = mappingService.createMappings(subscriptionId, mappingDTOs);
 		return new ResponseEntity<>(createdMappings, HttpStatus.CREATED);
-	}
-
-	/**
-	 * Get a specific mapping by its ID.
-	 *
-	 * @param subscriptionId The ID of the subscription.
-	 * @param mappingId      The ID of the mapping to retrieve.
-	 * @return A ResponseEntity containing the retrieved mapping and HTTP status
-	 *         code 200 (OK).
-	 */
-	@GetMapping("/{mappingId}")
-	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<MappingItemDTO> getMapping(@PathVariable Long subscriptionId, @PathVariable Long mappingId) {
-		MappingItemDTO mapping = mappingService.getMapping(mappingId);
-		return new ResponseEntity<>(mapping, HttpStatus.OK);
 	}
 
 	/**
@@ -72,26 +58,9 @@ public class SubscriptionMappingController {
 	 */
 	@GetMapping
 	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<List<MappingItemDTO>> getAllMappings(@PathVariable Long subscriptionId) {
-		List<MappingItemDTO> mappings = mappingService.getAllMappings(subscriptionId);
+	public ResponseEntity<MappingDTO> getAllMappings(@PathVariable Long subscriptionId) {
+		MappingDTO mappings = mappingService.getMappingBySubscription(subscriptionId);
 		return new ResponseEntity<>(mappings, HttpStatus.OK);
-	}
-
-	/**
-	 * Update an existing mapping.
-	 *
-	 * @param subscriptionId    The ID of the subscription.
-	 * @param mappingId         The ID of the mapping to update.
-	 * @param updatedMappingDTO The updated mapping data transfer object.
-	 * @return A ResponseEntity containing the updated mapping and HTTP status code
-	 *         200 (OK).
-	 */
-	@PutMapping("/{mappingId}")
-	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<MappingItemDTO> updateMapping(@PathVariable Long subscriptionId, @PathVariable Long mappingId,
-			@RequestBody MappingItemDTO updatedMappingDTO) {
-		MappingItemDTO updatedMapping = mappingService.updateMapping(mappingId, updatedMappingDTO);
-		return new ResponseEntity<>(updatedMapping, HttpStatus.OK);
 	}
 
 	/**
@@ -102,10 +71,10 @@ public class SubscriptionMappingController {
 	 * @return A ResponseEntity with HTTP status code 204 (No Content) indicating a
 	 *         successful deletion.
 	 */
-	@DeleteMapping("/{mappingId}")
+	@DeleteMapping
 	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<Void> deleteMapping(@PathVariable Long subscriptionId, @PathVariable Long mappingId) {
-		mappingService.deleteMapping(mappingId);
+	public ResponseEntity<Void> deleteMapping(@PathVariable Long subscriptionId) {
+		mappingService.deleteMappingBySubscription(subscriptionId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

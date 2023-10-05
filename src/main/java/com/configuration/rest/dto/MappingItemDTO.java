@@ -10,6 +10,7 @@ public class MappingItemDTO {
 	private String sourcekey;
 	private String internalkey;
 	private String type;
+	private Long subscriptionId;
 
 	/**
 	 * Get the source key of the mapping item.
@@ -64,4 +65,19 @@ public class MappingItemDTO {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	/**
+	 * @return the subscriptionId
+	 */
+	public Long getSubscriptionId() {
+		return subscriptionId;
+	}
+
+	/**
+	 * @param subscriptionId the subscriptionId to set
+	 */
+	public void setSubscriptionId(Long subscriptionId) {
+		this.subscriptionId = subscriptionId;
+	}
+
 }

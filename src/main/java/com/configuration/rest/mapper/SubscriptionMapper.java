@@ -1,7 +1,5 @@
 package com.configuration.rest.mapper;
 
-import java.util.stream.Collectors;
-
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +22,6 @@ import com.storage.repository.JpaConnectorRepository;
 public class SubscriptionMapper {
 
 	@Autowired
-	private SubscriptionPropertyMapper propertyMapper;
-
-	@Autowired
 	private JpaClientRepository clientRepository; // Your JpaClient repository
 
 	@Autowired
@@ -43,9 +38,6 @@ public class SubscriptionMapper {
 		dto.setId(subscription.getId().toString());
 		dto.setClientId(subscription.getClient().getId());
 		dto.setConnectorId(subscription.getConnector().getId().toString());
-		dto.setProperties(subscription.getProperties().stream().map(propertyMapper::toDto).collect(Collectors.toSet()));
-		dto.setDuration(subscription.getDuration());
-		dto.setNextSchedule(subscription.getNextSchedule());
 		// Map other fields as needed
 		return dto;
 	}
@@ -72,11 +64,6 @@ public class SubscriptionMapper {
 		// Set the client and connector in the subscription
 		subscription.setClient(client);
 		subscription.setConnector(connector);
-
-		subscription
-				.setProperties(dto.getProperties().stream().map(propertyMapper::toEntity).collect(Collectors.toSet()));
-		subscription.setDuration(dto.getDuration());
-		subscription.setNextSchedule(dto.getNextSchedule());
 		// Map other fields as needed
 		return subscription;
 	}
