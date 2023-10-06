@@ -31,6 +31,8 @@ public class ClientTemplateMapper {
 		ClientTemplateDTO dto = new ClientTemplateDTO();
 		dto.setId(entity.getId());
 		dto.setTemplate(entity.getTemplate());
+		dto.setCreated(entity.getCreatedDate());
+		dto.setUpdated(entity.getUpdatedDate());
 		return dto;
 	}
 

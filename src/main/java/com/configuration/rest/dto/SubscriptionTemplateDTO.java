@@ -4,7 +4,7 @@ package com.configuration.rest.dto;
  * Data Transfer Object (DTO) class representing a template. This class is used
  * to transfer template information between the controller and service layers.
  */
-public class SubscriptionTemplateDTO {
+public class SubscriptionTemplateDTO extends BaseDTO{
 
 	private String id;
 	private String template;

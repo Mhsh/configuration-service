@@ -25,6 +25,8 @@ public class ConnectorMetadataMapper {
 		dto.setId(connector.getId());
 		dto.setKey(connector.getKey());
 		dto.setMultiValued(connector.isMultiValued());
+		dto.setCreated(connector.getCreatedDate());
+		dto.setUpdated(connector.getUpdatedDate());
 		// Map other fields as needed
 		return dto;
 	}

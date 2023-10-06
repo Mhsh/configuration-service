@@ -5,7 +5,7 @@ package com.configuration.rest.dto;
  * is used to transfer connector metadata information between the controller and
  * service layers.
  */
-public class ConnectorMetadataDTO {
+public class ConnectorMetadataDTO extends BaseDTO{
 
 	private Long id;
 	private String key;

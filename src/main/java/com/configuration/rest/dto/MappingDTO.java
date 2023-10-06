@@ -7,7 +7,7 @@ import java.util.List;
  * This class is used to transfer mapping information between the controller and
  * service layers.
  */
-public class MappingDTO {
+public class MappingDTO extends BaseDTO{
 
 	private Long subscriptionId;
 	private List<MappingItemDTO> mappings;

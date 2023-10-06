@@ -23,6 +23,8 @@ public class SubscriptionTemplateMapper {
 		SubscriptionTemplateDTO dto = new SubscriptionTemplateDTO();
 		dto.setId(template.getId());
 		dto.setTemplate(template.getTemplate());
+		dto.setCreated(template.getCreatedDate());
+		dto.setUpdated(template.getUpdatedDate());
 		return dto;
 	}
 

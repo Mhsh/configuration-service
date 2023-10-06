@@ -9,7 +9,7 @@ import com.storage.jpa.Enums.FileType;
  * Data Transfer Object (DTO) class representing a connector. This class is used
  * to transfer connector information between the controller and service layers.
  */
-public class ConnectorDTO {
+public class ConnectorDTO extends BaseDTO{
 
 	private ConnectorType id;
 	private String description;

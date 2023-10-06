@@ -31,6 +31,8 @@ public class ConnectorMapper {
 		dto.setDescription(connector.getDescription());
 		dto.setFileType(connector.getFileType());
 		dto.setMetadata(connector.getMetadata().stream().map(metadataMapper::toDto).collect(Collectors.toSet()));
+		dto.setCreated(connector.getCreatedDate());
+		dto.setUpdated(connector.getUpdatedDate());
 		// Map other fields as needed
 		return dto;
 	}

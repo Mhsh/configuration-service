@@ -5,7 +5,7 @@ package com.configuration.rest.dto;
  * used to transfer subscription information between the controller and service
  * layers.
  */
-public class SubscriptionDTO {
+public class SubscriptionDTO extends BaseDTO{
 
 	private String id;
 	private String clientId; // You can use the client ID as a reference

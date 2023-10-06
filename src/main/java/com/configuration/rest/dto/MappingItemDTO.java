@@ -5,7 +5,7 @@ package com.configuration.rest.dto;
  * used to transfer mapping item information between the controller and service
  * layers.
  */
-public class MappingItemDTO {
+public class MappingItemDTO extends BaseDTO{
 
 	private String sourcekey;
 	private String internalkey;

@@ -4,7 +4,7 @@ package com.configuration.rest.dto;
  * A Data Transfer Object (DTO) representing a client template with its unique
  * identifier (ID) and a JSON template.
  */
-public class ClientTemplateDTO {
+public class ClientTemplateDTO extends BaseDTO{
 
 	/**
 	 * The unique identifier for the client template.

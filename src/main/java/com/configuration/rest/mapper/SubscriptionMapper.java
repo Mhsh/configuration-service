@@ -38,6 +38,8 @@ public class SubscriptionMapper {
 		dto.setId(subscription.getId().toString());
 		dto.setClientId(subscription.getClient().getId());
 		dto.setConnectorId(subscription.getConnector().getId().toString());
+		dto.setCreated(subscription.getCreatedDate());
+		dto.setUpdated(subscription.getUpdatedDate());
 		// Map other fields as needed
 		return dto;
 	}

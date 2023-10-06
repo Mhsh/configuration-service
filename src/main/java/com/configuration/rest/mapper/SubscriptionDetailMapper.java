@@ -33,9 +33,11 @@ public class SubscriptionDetailMapper {
 		dto.setId(jpaSubscriptionDetail.getId());
 		dto.setProperties(jpaSubscriptionDetail.getProperties());
 		dto.setDuration(jpaSubscriptionDetail.getDuration());
-		dto.setNextSchedule(jpaSubscriptionDetail.getNextSchedule());
+		dto.setNextSchedule(jpaSubscriptionDetail.getNextExecution());
 		dto.setDuration(jpaSubscriptionDetail.getDuration());
 		dto.setRawFileLocation(jpaSubscriptionDetail.getRawFileLocation());
+		dto.setCreated(jpaSubscriptionDetail.getCreatedDate());
+		dto.setUpdated(jpaSubscriptionDetail.getUpdatedDate());
 		return dto;
 	}
 
@@ -53,7 +55,7 @@ public class SubscriptionDetailMapper {
 		property.setId(subscriptionDetailDTO.getId());
 		property.setProperties(subscriptionDetailDTO.getProperties());
 		property.setDuration(subscriptionDetailDTO.getDuration());
-		property.setNextSchedule(subscriptionDetailDTO.getNextSchedule());
+		property.setNextExecution(subscriptionDetailDTO.getNextSchedule());
 		property.setDuration(subscriptionDetailDTO.getDuration());
 		property.setSubscription(subscriptionRepository.findById(subscriptionId).get());
 		property.setRawFileLocation(subscriptionDetailDTO.getRawFileLocation());

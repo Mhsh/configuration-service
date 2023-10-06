@@ -28,6 +28,8 @@ public class MappingMapper {
 		entity.setSourcekey(dto.getSourcekey());
 		entity.setInternalkey(dto.getInternalkey());
 		entity.setType(dto.getType());
+		dto.setCreated(subscription.getCreatedDate());
+		dto.setUpdated(subscription.getUpdatedDate());
 		return entity;
 	}
 

@@ -23,6 +23,8 @@ public class ClientMapper {
 		ClientDTO dto = new ClientDTO();
 		dto.setId(client.getId());
 		dto.setDescription(client.getDescription());
+		dto.setCreated(client.getCreatedDate());
+		dto.setUpdated(client.getUpdatedDate());
 		return dto;
 	}
 

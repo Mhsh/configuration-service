@@ -1,13 +1,13 @@
 package com.configuration.rest.dto;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 /**
  * Data Transfer Object (DTO) class representing subscription properties. This
  * class is used to transfer subscription property information between the
  * controller and service layers.
  */
-public class SubscriptionDetailDTO {
+public class SubscriptionDetailDTO extends BaseDTO{
 
 	private Long id;
 
@@ -23,7 +23,7 @@ public class SubscriptionDetailDTO {
 	/**
 	 * The date of the next scheduled event for the subscription.
 	 */
-	private Date nextSchedule;
+	private OffsetDateTime nextSchedule;
 
 	private String rawFileLocation;
 
@@ -86,14 +86,14 @@ public class SubscriptionDetailDTO {
 	/**
 	 * @return the nextSchedule
 	 */
-	public Date getNextSchedule() {
+	public OffsetDateTime getNextSchedule() {
 		return nextSchedule;
 	}
 
 	/**
 	 * @param nextSchedule the nextSchedule to set
 	 */
-	public void setNextSchedule(Date nextSchedule) {
+	public void setNextSchedule(OffsetDateTime nextSchedule) {
 		this.nextSchedule = nextSchedule;
 	}
 

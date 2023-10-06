@@ -4,7 +4,7 @@ package com.configuration.rest.dto;
  * Data Transfer Object (DTO) class representing a client. This class is used to
  * transfer client information between the controller and service layers.
  */
-public class ClientDTO {
+public class ClientDTO extends BaseDTO{
 
 	private String id;
 	private String description;
