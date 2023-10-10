@@ -5,11 +5,10 @@ package com.configuration.rest.dto;
  * is used to transfer connector metadata information between the controller and
  * service layers.
  */
-public class ConnectorMetadataDTO extends BaseDTO{
+public class ConnectorMetadataDTO extends BaseDTO {
 
 	private Long id;
 	private String key;
-	private boolean multiValued;
 
 	/**
 	 * Get the ID of the connector metadata.
@@ -48,25 +47,6 @@ public class ConnectorMetadataDTO extends BaseDTO{
 	}
 
 	/**
-	 * Check if the connector metadata is multi-valued.
-	 *
-	 * @return true if the connector metadata is multi-valued, false otherwise.
-	 */
-	public boolean isMultiValued() {
-		return multiValued;
-	}
-
-	/**
-	 * Set whether the connector metadata is multi-valued.
-	 *
-	 * @param multiValued true if the connector metadata is multi-valued, false
-	 *                    otherwise.
-	 */
-	public void setMultiValued(boolean multiValued) {
-		this.multiValued = multiValued;
-	}
-
-	/**
 	 * Generate a string representation of the ConnectorMetadataDTO object.
 	 *
 	 * @return A string containing the connector metadata's ID, key, and
@@ -74,6 +54,6 @@ public class ConnectorMetadataDTO extends BaseDTO{
 	 */
 	@Override
 	public String toString() {
-		return "ConnectorMetadataDTO [id=" + id + ", key=" + key + ", multiValued=" + multiValued + "]";
+		return "ConnectorMetadataDTO [id=" + id + ", key=" + key + "]";
 	}
 }

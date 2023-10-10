@@ -24,7 +24,6 @@ public class ConnectorMetadataMapper {
 		ConnectorMetadataDTO dto = new ConnectorMetadataDTO();
 		dto.setId(connector.getId());
 		dto.setKey(connector.getKey());
-		dto.setMultiValued(connector.isMultiValued());
 		dto.setCreated(connector.getCreatedDate());
 		dto.setUpdated(connector.getUpdatedDate());
 		// Map other fields as needed
@@ -42,7 +41,6 @@ public class ConnectorMetadataMapper {
 		JpaConnectorMetadata connector = new JpaConnectorMetadata();
 		connector.setId(dto.getId());
 		connector.setKey(dto.getKey());
-		connector.setMultiValued(dto.isMultiValued());
 		// Map other fields as needed
 		return connector;
 	}

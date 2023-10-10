@@ -1,8 +1,11 @@
 package com.configuration.rest.mapper;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.configuration.rest.dto.SubscriptionDetailDTO;
@@ -20,6 +23,9 @@ public class SubscriptionDetailMapper {
 	@Autowired
 	private JpaSubscriptionRepository subscriptionRepository;
 
+	@Value("${ingestion.smart.schedular.duration}")
+	private Integer duration;
+
 	/**
 	 * Converts a {@link JpaSubscriptionDetail} entity to a
 	 * {@link SubscriptionDetailDTO}.
@@ -32,7 +38,6 @@ public class SubscriptionDetailMapper {
 		SubscriptionDetailDTO dto = new SubscriptionDetailDTO();
 		dto.setId(jpaSubscriptionDetail.getId());
 		dto.setProperties(jpaSubscriptionDetail.getProperties());
-		dto.setDuration(jpaSubscriptionDetail.getDuration());
 		dto.setNextSchedule(jpaSubscriptionDetail.getNextExecution());
 		dto.setDuration(jpaSubscriptionDetail.getDuration());
 		dto.setRawFileLocation(jpaSubscriptionDetail.getRawFileLocation());
@@ -54,9 +59,8 @@ public class SubscriptionDetailMapper {
 		JpaSubscriptionDetail property = new JpaSubscriptionDetail();
 		property.setId(subscriptionDetailDTO.getId());
 		property.setProperties(subscriptionDetailDTO.getProperties());
-		property.setDuration(subscriptionDetailDTO.getDuration());
-		property.setNextExecution(subscriptionDetailDTO.getNextSchedule());
-		property.setDuration(subscriptionDetailDTO.getDuration());
+		property.setNextExecution(OffsetDateTime.now());
+		property.setDuration(duration);
 		property.setSubscription(subscriptionRepository.findById(subscriptionId).get());
 		property.setRawFileLocation(subscriptionDetailDTO.getRawFileLocation());
 		return property;
