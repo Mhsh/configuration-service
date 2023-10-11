@@ -44,7 +44,7 @@ public class ErrorDetailService {
 		JpaSubscriptionDetail jpaSubscriptionDetail = subscriptionDetailRepository.findById(subscriptionIdDetailId)
 				.orElseThrow(EntityNotFoundException::new);
 		List<JpaErrorDetail> subscriptionDetails = errorDetailRepository
-				.findByJpaSubscriptionDetail(jpaSubscriptionDetail);
+				.findBySubscriptionDetail(jpaSubscriptionDetail);
 		return subscriptionDetails.stream().map(errorDetailMapper::toDto).collect(Collectors.toList());
 	}
 
@@ -55,7 +55,7 @@ public class ErrorDetailService {
 	public void deleteErrorDetailBySubscription(Long subscriptionDetailId) {
 		JpaSubscriptionDetail jpaSubscriptionDetail = subscriptionDetailRepository.findById(subscriptionDetailId)
 				.orElseThrow(EntityNotFoundException::new);
-		errorDetailRepository.deleteByJpaSubscriptionDetail(jpaSubscriptionDetail);
+		errorDetailRepository.deleteBySubscriptionDetail(jpaSubscriptionDetail);
 	}
 
 	public boolean updateErrorDetail(Long id, ErrorDetailDTO updatedErrorDetail) {
@@ -65,7 +65,7 @@ public class ErrorDetailService {
 			JpaErrorDetail existingErrorDetail = existingErrorDetailOptional.get();
 
 			// Update the fields you want to change
-			existingErrorDetail.setErrorCode(updatedErrorDetail.getErrorCode());
+			existingErrorDetail.setType(updatedErrorDetail.getType());
 			existingErrorDetail.setErrorDetail(updatedErrorDetail.getErrorDetail());
 
 			// Save the updated error detail

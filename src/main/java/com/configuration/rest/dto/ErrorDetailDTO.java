@@ -6,7 +6,7 @@ public class ErrorDetailDTO {
 
 	private Long subscriptionId;
 
-	private Integer errorCode;
+	private String type;
 
 	private String errorDetail;
 
@@ -27,17 +27,17 @@ public class ErrorDetailDTO {
 	}
 
 	/**
-	 * @return the errorCode
+	 * @return the type
 	 */
-	public Integer getErrorCode() {
-		return errorCode;
+	public String getType() {
+		return type;
 	}
 
 	/**
-	 * @param errorCode the errorCode to set
+	 * @param type the type to set
 	 */
-	public void setErrorCode(Integer errorCode) {
-		this.errorCode = errorCode;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	/**

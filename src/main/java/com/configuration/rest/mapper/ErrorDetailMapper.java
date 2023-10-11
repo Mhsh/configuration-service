@@ -32,11 +32,11 @@ public class ErrorDetailMapper {
 	 */
 	public ErrorDetailDTO toDto(JpaErrorDetail errorDetail) {
 		ErrorDetailDTO dto = new ErrorDetailDTO();
-		dto.setErrorCode(errorDetail.getErrorCode());
+		dto.setType(errorDetail.getType());
 		dto.setErrorDetail(errorDetail.getErrorDetail());
 		dto.setId(errorDetail.getId());
 		dto.setRetryCount(errorDetail.getRetryCount());
-		dto.setSubscriptionId(errorDetail.getJpaSubscriptionDetail().getId());
+		dto.setSubscriptionId(errorDetail.getSubscriptionDetail().getId());
 		return dto;
 	}
 
@@ -51,11 +51,11 @@ public class ErrorDetailMapper {
 	 */
 	public JpaErrorDetail toEntity(ErrorDetailDTO errorDetailDTO, Long subscriptionDetailId) {
 		JpaErrorDetail dto = new JpaErrorDetail();
-		dto.setErrorCode(errorDetailDTO.getErrorCode());
+		dto.setType(errorDetailDTO.getType());
 		dto.setErrorDetail(errorDetailDTO.getErrorDetail());
 		dto.setId(errorDetailDTO.getId());
 		dto.setRetryCount(errorDetailDTO.getRetryCount());
-		dto.setJpaSubscriptionDetail(
+		dto.setSubscriptionDetail(
 				subscriptionDetailRepository.findById(errorDetailDTO.getSubscriptionId()).orElse(null));
 		return dto;
 	}
