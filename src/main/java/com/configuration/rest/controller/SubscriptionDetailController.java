@@ -43,6 +43,15 @@ public class SubscriptionDetailController {
 		return ResponseEntity.ok(createdSubscriptionDetailDTO);
 	}
 
+	@PostMapping("/addAll")
+	@Operation(tags = { "SubscriptionDetail" })
+	public ResponseEntity<SubscriptionDetailDTO> createSubscriptionDetails(
+			@RequestBody List<SubscriptionDetailDTO> subscriptionDetailDTOs, @PathVariable Long id) {
+		subscriptionDetailDTOs.stream().forEach(
+				subscriptionDetailDTO -> subscriptionDetailService.createSubscriptionDetail(subscriptionDetailDTO, id));
+		return ResponseEntity.noContent().build();
+	}
+
 	@PutMapping("/{id}")
 	@Operation(tags = { "SubscriptionDetail" })
 	public ResponseEntity<SubscriptionDetailDTO> updateSubscriptionDetail(@PathVariable Long id,
