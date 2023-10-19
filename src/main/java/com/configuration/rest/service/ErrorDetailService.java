@@ -53,9 +53,7 @@ public class ErrorDetailService {
 	}
 
 	public void deleteErrorDetailBySubscription(Long subscriptionDetailId) {
-		JpaSubscriptionDetail jpaSubscriptionDetail = subscriptionDetailRepository.findById(subscriptionDetailId)
-				.orElseThrow(EntityNotFoundException::new);
-		errorDetailRepository.deleteBySubscriptionDetail(jpaSubscriptionDetail);
+		errorDetailRepository.deleteBySubscriptionDetailId(subscriptionDetailId);
 	}
 
 	public boolean updateErrorDetail(Long id, ErrorDetailDTO updatedErrorDetail) {
