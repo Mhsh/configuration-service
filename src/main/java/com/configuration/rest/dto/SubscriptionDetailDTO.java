@@ -25,6 +25,11 @@ public class SubscriptionDetailDTO extends BaseDTO {
 
 	private String rawFileLocation;
 
+	private Boolean blacklist = false;
+
+	private Boolean isBodyEnabled = false;
+
+	private String name;
 	/**
 	 * @return the id
 	 */
@@ -94,4 +99,48 @@ public class SubscriptionDetailDTO extends BaseDTO {
 	public void setRawFileLocation(String rawFileLocation) {
 		this.rawFileLocation = rawFileLocation;
 	}
+
+	/**
+	 * @return the blacklist
+	 */
+	public Boolean isBlacklisted() {
+		return blacklist;
+	}
+
+	/**
+	 * @param blacklist the blacklist to set
+	 */
+	public void setBlacklisted(Boolean blacklist) {
+		this.blacklist = blacklist;
+	}
+
+	/**
+	 * @return the isBodyEnabled
+	 */
+	public Boolean isBodyEnabled() {
+		return isBodyEnabled;
+	}
+
+	/**
+	 * @param isBodyEnabled the isBodyEnabled to set
+	 */
+	public void setBodyEnabled(Boolean isBodyEnabled) {
+		this.isBodyEnabled = isBodyEnabled;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }

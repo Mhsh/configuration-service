@@ -33,6 +33,7 @@ public class ConnectorMapper {
 		dto.setMetadata(connector.getMetadata().stream().map(metadataMapper::toDto).collect(Collectors.toSet()));
 		dto.setCreated(connector.getCreatedDate());
 		dto.setUpdated(connector.getUpdatedDate());
+		dto.setSmartScheudle(connector.getSmartScheudle());
 		// Map other fields as needed
 		return dto;
 	}
@@ -50,6 +51,7 @@ public class ConnectorMapper {
 		connector.setDescription(dto.getDescription());
 		connector.setFileType(dto.getFileType());
 		connector.setMetadata(dto.getMetadata().stream().map(metadataMapper::toEntity).collect(Collectors.toSet()));
+		connector.setSmartScheudle(dto.getSmartScheudle());
 		// Map other fields as needed
 		return connector;
 	}

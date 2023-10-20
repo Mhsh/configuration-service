@@ -42,6 +42,8 @@ public class SubscriptionDetailMapper {
 		dto.setDuration(jpaSubscriptionDetail.getDuration());
 		dto.setCreated(jpaSubscriptionDetail.getCreatedDate());
 		dto.setUpdated(jpaSubscriptionDetail.getUpdatedDate());
+		dto.setBodyEnabled(jpaSubscriptionDetail.isBodyEnabled());
+		dto.setName(jpaSubscriptionDetail.getName());
 		return dto;
 	}
 
@@ -61,6 +63,8 @@ public class SubscriptionDetailMapper {
 		property.setNextExecution(OffsetDateTime.now());
 		property.setDuration(duration);
 		property.setSubscription(subscriptionRepository.findById(subscriptionId).get());
+		property.setBodyEnabled(subscriptionDetailDTO.isBodyEnabled());
+		property.setName(subscriptionDetailDTO.getName());
 		return property;
 	}
 }
