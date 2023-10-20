@@ -1,6 +1,7 @@
 package com.configuration.rest.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class ClientTemplateService {
 	 *           retrieve.
 	 * @return The found {@link JpaClientTemplate} entity, or null if not found.
 	 */
-	public JpaClientTemplate findById(Long id) {
+	public JpaClientTemplate findById(UUID id) {
 		return clientTemplateRepository.findById(id).orElse(null);
 	}
 
@@ -54,7 +55,7 @@ public class ClientTemplateService {
 	 * @param id The unique identifier (ID) of the {@link JpaClientTemplate} to be
 	 *           deleted.
 	 */
-	public void delete(Long id) {
+	public void delete(UUID id) {
 		clientTemplateRepository.deleteById(id);
 	}
 

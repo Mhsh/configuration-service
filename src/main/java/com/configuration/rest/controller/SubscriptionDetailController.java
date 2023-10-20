@@ -2,6 +2,7 @@ package com.configuration.rest.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,14 +31,14 @@ public class SubscriptionDetailController {
 
 	@GetMapping
 	@Operation(tags = { "SubscriptionDetail" })
-	public List<SubscriptionDetailDTO> getAllSubscriptionDetails(@PathVariable Long id) {
+	public List<SubscriptionDetailDTO> getAllSubscriptionDetails(@PathVariable UUID id) {
 		return subscriptionDetailService.getAllSubscriptionDetailsBySubscription(id);
 	}
 
 	@PostMapping
 	@Operation(tags = { "SubscriptionDetail" })
 	public ResponseEntity<SubscriptionDetailDTO> createSubscriptionDetail(
-			@RequestBody SubscriptionDetailDTO subscriptionDetailDTO, @PathVariable Long id) {
+			@RequestBody SubscriptionDetailDTO subscriptionDetailDTO, @PathVariable UUID id) {
 		SubscriptionDetailDTO createdSubscriptionDetailDTO = subscriptionDetailService
 				.createSubscriptionDetail(subscriptionDetailDTO, id);
 		return ResponseEntity.ok(createdSubscriptionDetailDTO);
@@ -46,7 +47,7 @@ public class SubscriptionDetailController {
 	@PostMapping("/addAll")
 	@Operation(tags = { "SubscriptionDetail" })
 	public ResponseEntity<SubscriptionDetailDTO> createSubscriptionDetails(
-			@RequestBody List<SubscriptionDetailDTO> subscriptionDetailDTOs, @PathVariable Long id) {
+			@RequestBody List<SubscriptionDetailDTO> subscriptionDetailDTOs, @PathVariable UUID id) {
 		subscriptionDetailDTOs.stream().forEach(
 				subscriptionDetailDTO -> subscriptionDetailService.createSubscriptionDetail(subscriptionDetailDTO, id));
 		return ResponseEntity.noContent().build();
@@ -54,7 +55,7 @@ public class SubscriptionDetailController {
 
 	@PutMapping("/{id}")
 	@Operation(tags = { "SubscriptionDetail" })
-	public ResponseEntity<SubscriptionDetailDTO> updateSubscriptionDetail(@PathVariable Long id,
+	public ResponseEntity<SubscriptionDetailDTO> updateSubscriptionDetail(@PathVariable UUID id,
 			@RequestBody SubscriptionDetailDTO subscriptionDetailDTO) {
 		Optional<SubscriptionDetailDTO> updatedSubscriptionDetailDTO = subscriptionDetailService
 				.updateSubscriptionDetail(id, subscriptionDetailDTO);
@@ -63,7 +64,7 @@ public class SubscriptionDetailController {
 
 	@DeleteMapping("/{id}")
 	@Operation(tags = { "SubscriptionDetail" })
-	public ResponseEntity<Void> deleteSubscriptionDetail(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteSubscriptionDetail(@PathVariable UUID id) {
 		boolean deleted = subscriptionDetailService.deleteSubscriptionDetail(id);
 		if (deleted) {
 			return ResponseEntity.noContent().build();

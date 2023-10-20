@@ -1,10 +1,12 @@
 package com.configuration.rest.dto;
 
+import java.util.UUID;
+
 public class ErrorDetailDTO {
 
-	private Long id;
+	private UUID id;
 
-	private Long subscriptionId;
+	private UUID subscriptionId;
 
 	private String type;
 
@@ -15,14 +17,14 @@ public class ErrorDetailDTO {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -71,14 +73,14 @@ public class ErrorDetailDTO {
 	/**
 	 * @return the subscriptionId
 	 */
-	public Long getSubscriptionId() {
+	public UUID getSubscriptionId() {
 		return subscriptionId;
 	}
 
 	/**
 	 * @param subscriptionId the subscriptionId to set
 	 */
-	public void setSubscriptionId(Long subscriptionId) {
+	public void setSubscriptionId(UUID subscriptionId) {
 		this.subscriptionId = subscriptionId;
 	}
 

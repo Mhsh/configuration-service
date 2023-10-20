@@ -1,6 +1,7 @@
 package com.configuration.rest.dto;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 /**
  * Data Transfer Object (DTO) class representing subscription properties. This
@@ -9,7 +10,7 @@ import java.time.OffsetDateTime;
  */
 public class SubscriptionDetailDTO extends BaseDTO {
 
-	private Long id;
+	private UUID id;
 
 	private String properties;
 
@@ -33,14 +34,14 @@ public class SubscriptionDetailDTO extends BaseDTO {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

@@ -2,6 +2,7 @@ package com.configuration.rest.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -34,19 +35,19 @@ public class ErrorDetailController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ErrorDetailDTO> getErrorDetailById(@PathVariable Long id) {
+	public ResponseEntity<ErrorDetailDTO> getErrorDetailById(@PathVariable UUID id) {
 		Optional<ErrorDetailDTO> errorDetail = errorDetailService.getErrorDetailById(id);
 		return errorDetail.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 
 	@GetMapping("/subscription/{subscriptionId}")
-	public ResponseEntity<List<ErrorDetailDTO>> getErrorDetailBySubscription(@PathVariable Long subscriptionId) {
+	public ResponseEntity<List<ErrorDetailDTO>> getErrorDetailBySubscription(@PathVariable UUID subscriptionId) {
 		List<ErrorDetailDTO> errorDetails = errorDetailService.getErrorDetailBySubscription(subscriptionId);
 		return ResponseEntity.ok(errorDetails);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> updateErrorDetail(@PathVariable Long id,
+	public ResponseEntity<Void> updateErrorDetail(@PathVariable UUID id,
 			@Valid @RequestBody ErrorDetailDTO updatedErrorDetail) {
 		boolean updated = errorDetailService.updateErrorDetail(id, updatedErrorDetail);
 		return updated ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();

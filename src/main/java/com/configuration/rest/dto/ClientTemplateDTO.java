@@ -1,5 +1,7 @@
 package com.configuration.rest.dto;
 
+import java.util.UUID;
+
 /**
  * A Data Transfer Object (DTO) representing a client template with its unique
  * identifier (ID) and a JSON template.
@@ -9,7 +11,7 @@ public class ClientTemplateDTO extends BaseDTO{
 	/**
 	 * The unique identifier for the client template.
 	 */
-	private Long id;
+	private UUID id;
 
 	/**
 	 * The JSON template stored as a string.
@@ -21,7 +23,7 @@ public class ClientTemplateDTO extends BaseDTO{
 	 *
 	 * @return The ID of the client template.
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -30,7 +32,7 @@ public class ClientTemplateDTO extends BaseDTO{
 	 *
 	 * @param id The ID of the client template.
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

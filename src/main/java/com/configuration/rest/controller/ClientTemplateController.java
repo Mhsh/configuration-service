@@ -1,6 +1,7 @@
 package com.configuration.rest.controller;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class ClientTemplateController {
 	 */
 	@GetMapping("/{id}")
 	@Operation(tags = { "ClientTemplate" })
-	public ResponseEntity<ClientTemplateDTO> getClientTemplate(@PathVariable Long id) {
+	public ResponseEntity<ClientTemplateDTO> getClientTemplate(@PathVariable UUID id) {
 		JpaClientTemplate template = clientTemplateService.findById(id);
 		if (template != null) {
 			ClientTemplateDTO dto = clientTemplateMapper.toDTO(template);
@@ -98,7 +99,7 @@ public class ClientTemplateController {
 	 */
 	@PutMapping("/{id}")
 	@Operation(tags = { "ClientTemplate" })
-	public ResponseEntity<ClientTemplateDTO> updateClientTemplate(@PathVariable Long id, @PathVariable String clientId,
+	public ResponseEntity<ClientTemplateDTO> updateClientTemplate(@PathVariable UUID id, @PathVariable String clientId,
 			@RequestBody ClientTemplateDTO dto) {
 		JpaClientTemplate existingEntity = clientTemplateService.findById(id);
 		if (existingEntity != null) {
@@ -122,7 +123,7 @@ public class ClientTemplateController {
 	 */
 	@DeleteMapping("/{id}")
 	@Operation(tags = { "ClientTemplate" })
-	public ResponseEntity<Void> deleteClientTemplate(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteClientTemplate(@PathVariable UUID id) {
 		JpaClientTemplate template = clientTemplateService.findById(id);
 		if (template != null) {
 			clientTemplateService.delete(id);

@@ -1,5 +1,7 @@
 package com.configuration.rest.dto;
 
+import java.util.UUID;
+
 /**
  * Data Transfer Object (DTO) class representing a mapping item. This class is
  * used to transfer mapping item information between the controller and service
@@ -10,7 +12,7 @@ public class MappingItemDTO extends BaseDTO{
 	private String sourcekey;
 	private String internalkey;
 	private String type;
-	private Long subscriptionId;
+	private UUID subscriptionId;
 
 	/**
 	 * Get the source key of the mapping item.
@@ -69,14 +71,14 @@ public class MappingItemDTO extends BaseDTO{
 	/**
 	 * @return the subscriptionId
 	 */
-	public Long getSubscriptionId() {
+	public UUID getSubscriptionId() {
 		return subscriptionId;
 	}
 
 	/**
 	 * @param subscriptionId the subscriptionId to set
 	 */
-	public void setSubscriptionId(Long subscriptionId) {
+	public void setSubscriptionId(UUID subscriptionId) {
 		this.subscriptionId = subscriptionId;
 	}
 

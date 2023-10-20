@@ -1,5 +1,7 @@
 package com.configuration.rest.dto;
 
+import java.util.UUID;
+
 /**
  * Data Transfer Object (DTO) class representing connector metadata. This class
  * is used to transfer connector metadata information between the controller and
@@ -7,7 +9,7 @@ package com.configuration.rest.dto;
  */
 public class ConnectorMetadataDTO extends BaseDTO {
 
-	private Long id;
+	private UUID id;
 	private String key;
 
 	/**
@@ -15,7 +17,7 @@ public class ConnectorMetadataDTO extends BaseDTO {
 	 *
 	 * @return The connector metadata's ID.
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -24,7 +26,7 @@ public class ConnectorMetadataDTO extends BaseDTO {
 	 *
 	 * @param id The connector metadata's ID to set.
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

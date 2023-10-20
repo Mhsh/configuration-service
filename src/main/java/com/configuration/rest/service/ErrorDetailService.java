@@ -2,6 +2,7 @@ package com.configuration.rest.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
@@ -34,12 +35,12 @@ public class ErrorDetailService {
 		return subscriptionDetails.stream().map(errorDetailMapper::toDto).collect(Collectors.toList());
 	}
 
-	public Optional<ErrorDetailDTO> getErrorDetailById(Long id) {
+	public Optional<ErrorDetailDTO> getErrorDetailById(UUID id) {
 		Optional<JpaErrorDetail> subscriptionOptional = errorDetailRepository.findById(id);
 		return subscriptionOptional.map(errorDetailMapper::toDto);
 	}
 
-	public List<ErrorDetailDTO> getErrorDetailBySubscription(Long subscriptionIdDetailId) {
+	public List<ErrorDetailDTO> getErrorDetailBySubscription(UUID subscriptionIdDetailId) {
 		// Retrieve JpaSubscriptionDetail based on subscriptionId
 		JpaSubscriptionDetail jpaSubscriptionDetail = subscriptionDetailRepository.findById(subscriptionIdDetailId)
 				.orElseThrow(EntityNotFoundException::new);
@@ -56,7 +57,7 @@ public class ErrorDetailService {
 		errorDetailRepository.deleteBySubscriptionDetailId(subscriptionDetailId);
 	}
 
-	public boolean updateErrorDetail(Long id, ErrorDetailDTO updatedErrorDetail) {
+	public boolean updateErrorDetail(UUID id, ErrorDetailDTO updatedErrorDetail) {
 		Optional<JpaErrorDetail> existingErrorDetailOptional = errorDetailRepository.findById(id);
 
 		if (existingErrorDetailOptional.isPresent()) {

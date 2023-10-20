@@ -2,6 +2,7 @@ package com.configuration.rest.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -49,7 +50,7 @@ public class SubscriptionController {
 	 */
 	@GetMapping("/{id}")
 	@Operation(tags = { "Subscription" })
-	public Optional<SubscriptionDTO> getSubscriptionById(@PathVariable Long id) {
+	public Optional<SubscriptionDTO> getSubscriptionById(@PathVariable UUID id) {
 		return subscriptionService.getSubscriptionById(id);
 	}
 
@@ -76,7 +77,7 @@ public class SubscriptionController {
 	 */
 	@PutMapping("/{id}")
 	@Operation(tags = { "Subscription" })
-	public SubscriptionDTO updateSubscription(@PathVariable Long id,
+	public SubscriptionDTO updateSubscription(@PathVariable UUID id,
 			@RequestBody SubscriptionDTO updatedSubscriptionDTO) {
 		return subscriptionService.updateSubscription(id, updatedSubscriptionDTO);
 	}
@@ -88,7 +89,7 @@ public class SubscriptionController {
 	 */
 	@DeleteMapping("/{id}")
 	@Operation(tags = { "Subscription" })
-	public void deleteSubscription(@PathVariable Long id) {
+	public void deleteSubscription(@PathVariable UUID id) {
 		subscriptionService.deleteSubscription(id);
 	}
 }

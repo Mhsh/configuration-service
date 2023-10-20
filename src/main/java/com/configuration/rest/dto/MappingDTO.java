@@ -1,6 +1,7 @@
 package com.configuration.rest.dto;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Data Transfer Object (DTO) class representing mappings for a subscription.
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public class MappingDTO extends BaseDTO{
 
-	private Long subscriptionId;
+	private UUID subscriptionId;
 	private List<MappingItemDTO> mappings;
 
 	/**
@@ -17,7 +18,7 @@ public class MappingDTO extends BaseDTO{
 	 *
 	 * @return The subscription's ID.
 	 */
-	public Long getSubscriptionId() {
+	public UUID getSubscriptionId() {
 		return subscriptionId;
 	}
 
@@ -26,7 +27,7 @@ public class MappingDTO extends BaseDTO{
 	 *
 	 * @param subscriptionId The subscription's ID to set.
 	 */
-	public void setSubscriptionId(Long subscriptionId) {
+	public void setSubscriptionId(UUID subscriptionId) {
 		this.subscriptionId = subscriptionId;
 	}
 

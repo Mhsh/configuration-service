@@ -45,11 +45,11 @@ public class ClientTemplateMapper {
 	 */
 	public JpaClientTemplate toEntity(ClientTemplateDTO dto, String clientId) {
 		JpaClientTemplate entity = new JpaClientTemplate();
-		entity.setId(dto.getId());
-		entity.setTemplate(dto.getTemplate());
-		// Load client and connector entities from the database based on their IDs
 		JpaClient client = clientRepository.findById(clientId)
 				.orElseThrow(() -> new EntityNotFoundException("Client not found with ID: " + clientId));
+		entity.setTemplate(dto.getTemplate());
+		// Load client and connector entities from the database based on their IDs
+		
 		entity.setClient(client);
 		return entity;
 	}

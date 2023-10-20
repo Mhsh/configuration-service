@@ -2,6 +2,7 @@ package com.configuration.rest.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
@@ -44,7 +45,7 @@ public class SubscriptionService {
 	 * @param id The ID of the subscription to retrieve.
 	 * @return The subscription DTO if found, or an empty optional if not found.
 	 */
-	public Optional<SubscriptionDTO> getSubscriptionById(Long id) {
+	public Optional<SubscriptionDTO> getSubscriptionById(UUID id) {
 		Optional<JpaSubscription> subscriptionOptional = subscriptionRepository.findById(id);
 		return subscriptionOptional.map(subscriptionMapper::toDto);
 	}
@@ -70,7 +71,7 @@ public class SubscriptionService {
 	 * @throws EntityNotFoundException If the subscription with the given ID is not
 	 *                                 found.
 	 */
-	public SubscriptionDTO updateSubscription(Long id, SubscriptionDTO updatedSubscriptionDTO) {
+	public SubscriptionDTO updateSubscription(UUID id, SubscriptionDTO updatedSubscriptionDTO) {
 		if (!subscriptionRepository.existsById(id)) {
 			throw new EntityNotFoundException("Subscription not found with ID: " + id);
 		}
@@ -87,7 +88,7 @@ public class SubscriptionService {
 	 * @throws EntityNotFoundException If the subscription with the given ID is not
 	 *                                 found.
 	 */
-	public void deleteSubscription(Long id) {
+	public void deleteSubscription(UUID id) {
 		if (!subscriptionRepository.existsById(id)) {
 			throw new EntityNotFoundException("Subscription not found with ID: " + id);
 		}

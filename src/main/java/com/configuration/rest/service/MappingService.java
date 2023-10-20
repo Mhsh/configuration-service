@@ -2,6 +2,7 @@ package com.configuration.rest.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
@@ -44,7 +45,7 @@ public class MappingService {
 	 * @throws EntityNotFoundException If the subscription with the given ID is not
 	 *                                 found.
 	 */
-	public MappingDTO createMappings(Long subscriptionId, List<MappingItemDTO> mappingDTOs) {
+	public MappingDTO createMappings(UUID subscriptionId, List<MappingItemDTO> mappingDTOs) {
 		Optional<JpaSubscription> subscriptionOptional = subscriptionRepository.findById(subscriptionId);
 
 		if (subscriptionOptional.isPresent()) {
@@ -67,7 +68,7 @@ public class MappingService {
 	 * @throws EntityNotFoundException If the mapping with the given ID is not
 	 *                                 found.
 	 */
-	public MappingDTO getMappingBySubscription(Long subscriptionId) {
+	public MappingDTO getMappingBySubscription(UUID subscriptionId) {
 		Optional<JpaSubscription> subscriptionOptional = subscriptionRepository.findById(subscriptionId);
 
 		if (subscriptionOptional.isPresent()) {
@@ -87,7 +88,7 @@ public class MappingService {
 	 * @throws EntityNotFoundException If the mapping with the given ID is not
 	 *                                 found.
 	 */
-	public void deleteMappingBySubscription(Long subscriptionId) {
+	public void deleteMappingBySubscription(UUID subscriptionId) {
 		Optional<JpaSubscription> subscriptionOptional = subscriptionRepository.findById(subscriptionId);
 
 		if (subscriptionOptional.isPresent()) {
@@ -97,7 +98,7 @@ public class MappingService {
 		}
 	}
 
-	private MappingDTO createMappingDTO(List<MappingItemDTO> mappingItems, Long subscriptionId) {
+	private MappingDTO createMappingDTO(List<MappingItemDTO> mappingItems, UUID subscriptionId) {
 		MappingDTO mappingDTO = new MappingDTO();
 		mappingDTO.setMappings(mappingItems);
 		mappingDTO.setSubscriptionId(subscriptionId);

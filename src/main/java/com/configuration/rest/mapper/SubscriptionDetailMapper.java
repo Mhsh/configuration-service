@@ -1,6 +1,7 @@
 package com.configuration.rest.mapper;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -51,12 +52,12 @@ public class SubscriptionDetailMapper {
 	 * Converts a {@link SubscriptionDetailDTO} to a {@link JpaSubscriptionDetail}
 	 * entity.
 	 *
-	 * @param dto The SubscriptionPropertyDTO to be converted.
+	 * @param dto The SubscriptionPropertyDTO to be converted. 
 	 * @return The corresponding JpaSubscriptionProperty entity.
 	 * @throws EntityNotFoundException If the referenced connector metadata is not
 	 *                                 found in the database.
 	 */
-	public JpaSubscriptionDetail toEntity(SubscriptionDetailDTO subscriptionDetailDTO, Long subscriptionId) {
+	public JpaSubscriptionDetail toEntity(SubscriptionDetailDTO subscriptionDetailDTO, UUID subscriptionId) {
 		JpaSubscriptionDetail property = new JpaSubscriptionDetail();
 		property.setId(subscriptionDetailDTO.getId());
 		property.setProperties(subscriptionDetailDTO.getProperties());

@@ -1,6 +1,7 @@
 package com.configuration.rest.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class SubscriptionMappingController {
 	 */
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<MappingDTO> createMappings(@PathVariable Long subscriptionId,
+	public ResponseEntity<MappingDTO> createMappings(@PathVariable UUID subscriptionId,
 			@RequestBody List<MappingItemDTO> mappingDTOs) {
 		MappingDTO createdMappings = mappingService.createMappings(subscriptionId, mappingDTOs);
 		return new ResponseEntity<>(createdMappings, HttpStatus.CREATED);
@@ -57,7 +58,7 @@ public class SubscriptionMappingController {
 	 */
 	@GetMapping
 	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<MappingDTO> getAllMappings(@PathVariable Long subscriptionId) {
+	public ResponseEntity<MappingDTO> getAllMappings(@PathVariable UUID subscriptionId) {
 		MappingDTO mappings = mappingService.getMappingBySubscription(subscriptionId);
 		return new ResponseEntity<>(mappings, HttpStatus.OK);
 	}
@@ -72,7 +73,7 @@ public class SubscriptionMappingController {
 	 */
 	@DeleteMapping
 	@Operation(tags = { "SubscriptionMapping" })
-	public ResponseEntity<Void> deleteMapping(@PathVariable Long subscriptionId) {
+	public ResponseEntity<Void> deleteMapping(@PathVariable UUID subscriptionId) {
 		mappingService.deleteMappingBySubscription(subscriptionId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
