@@ -49,11 +49,11 @@ public class ErrorDetailService {
 		return subscriptionDetails.stream().map(errorDetailMapper::toDto).collect(Collectors.toList());
 	}
 
-	public void deleteErrorDetailById(Long id) {
+	public void deleteErrorDetailById(UUID id) {
 		errorDetailRepository.deleteById(id);
 	}
 
-	public void deleteErrorDetailBySubscription(Long subscriptionDetailId) {
+	public void deleteErrorDetailBySubscription(UUID subscriptionDetailId) {
 		errorDetailRepository.deleteBySubscriptionDetailId(subscriptionDetailId);
 	}
 

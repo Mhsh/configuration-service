@@ -54,13 +54,13 @@ public class ErrorDetailController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteErrorDetailById(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteErrorDetailById(@PathVariable UUID id) {
 		errorDetailService.deleteErrorDetailById(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@DeleteMapping("/subscription/{subscriptionId}")
-	public ResponseEntity<Void> deleteErrorDetailBySubscription(@PathVariable Long subscriptionId) {
+	public ResponseEntity<Void> deleteErrorDetailBySubscription(@PathVariable UUID subscriptionId) {
 
 		errorDetailService.deleteErrorDetailBySubscription(subscriptionId);
 		return ResponseEntity.noContent().build();
