@@ -1,6 +1,7 @@
 package com.configuration.rest.mapper;
 
 import java.time.OffsetDateTime;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.persistence.EntityNotFoundException;
@@ -66,6 +67,9 @@ public class SubscriptionDetailMapper {
 		property.setSubscription(subscriptionRepository.findById(subscriptionId).get());
 		property.setBodyEnabled(subscriptionDetailDTO.isBodyEnabled());
 		property.setName(subscriptionDetailDTO.getName());
+//		property.setName(new Random().ints(10, 65, 91)
+//			    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+//			    .toString());
 		return property;
 	}
 }

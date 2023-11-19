@@ -1,7 +1,7 @@
 package com.configuration.rest.mapper;
 
 import javax.persistence.EntityNotFoundException;
-
+import org.postgresql.shaded.com.ongres.scram.common.message.ServerFinalMessage.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +37,8 @@ public class ErrorDetailMapper {
 		dto.setId(errorDetail.getId());
 		dto.setRetryCount(errorDetail.getRetryCount());
 		dto.setSubscriptionId(errorDetail.getSubscriptionDetail().getId());
+		dto.setConnectorType(errorDetail.getConnectorType());
+		dto.setEngineType(errorDetail.getEngineType());
 		return dto;
 	}
 
@@ -57,6 +59,8 @@ public class ErrorDetailMapper {
 		dto.setRetryCount(errorDetailDTO.getRetryCount());
 		dto.setSubscriptionDetail(
 				subscriptionDetailRepository.findById(errorDetailDTO.getSubscriptionId()).orElse(null));
+		dto.setConnectorType(errorDetailDTO.getConnectorType());
+		dto.setEngineType(errorDetailDTO.getEngineType());
 		return dto;
 	}
 }

@@ -2,6 +2,9 @@ package com.configuration.rest.dto;
 
 import java.util.UUID;
 
+import com.storage.jpa.Enums.ConnectorType;
+import com.storage.jpa.Enums.EngineType;
+
 public class ErrorDetailDTO {
 
 	private UUID id;
@@ -13,6 +16,10 @@ public class ErrorDetailDTO {
 	private String errorDetail;
 
 	private Integer retryCount;
+
+	private ConnectorType connectorType;
+
+	private EngineType engineType;
 
 	/**
 	 * @return the id
@@ -82,6 +89,34 @@ public class ErrorDetailDTO {
 	 */
 	public void setSubscriptionId(UUID subscriptionId) {
 		this.subscriptionId = subscriptionId;
+	}
+
+	/**
+	 * @return the connectorType
+	 */
+	public ConnectorType getConnectorType() {
+		return connectorType;
+	}
+
+	/**
+	 * @param connectorType the connectorType to set
+	 */
+	public void setConnectorType(ConnectorType connectorType) {
+		this.connectorType = connectorType;
+	}
+
+	/**
+	 * @return the engineType
+	 */
+	public EngineType getEngineType() {
+		return engineType;
+	}
+
+	/**
+	 * @param engineType the engineType to set
+	 */
+	public void setEngineType(EngineType engineType) {
+		this.engineType = engineType;
 	}
 
 }
