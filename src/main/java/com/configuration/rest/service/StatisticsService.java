@@ -17,7 +17,9 @@ import org.springframework.web.client.RestTemplate;
 import com.configuration.rest.dto.QueueDetails;
 import com.configuration.rest.dto.RateDetailDTO;
 import com.storage.jpa.Enums.ConnectorType;
-import com.storage.repository.JpaErrorDetailRepository;
+import com.storage.repository.JpaETLErrorDetailRepository;
+import com.storage.repository.JpaETLFileRepository;
+import com.storage.repository.JpaIngestionErrorDetailRepository;
 import com.storage.repository.JpaRssDigestRepository;
 import com.storage.repository.JpaSubscriptionDetailRepository;
 
@@ -25,13 +27,19 @@ import com.storage.repository.JpaSubscriptionDetailRepository;
 public class StatisticsService {
 
 	@Autowired
-	private JpaErrorDetailRepository errorDetailRepository;
+	private JpaIngestionErrorDetailRepository errorDetailRepository;
 
 	@Autowired
 	private JpaRssDigestRepository rssDigestRepository;
 
 	@Autowired
 	private JpaSubscriptionDetailRepository subscriptionDetailRepository;
+
+	@Autowired
+	private JpaETLErrorDetailRepository etlErrorDetailRepository;
+
+	@Autowired
+	private JpaETLFileRepository etlFileRepository;
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -51,8 +59,16 @@ public class StatisticsService {
 	 *
 	 * @return The count of error details.
 	 */
-	public Long getCountOfErrorDetails() {
+	public Long getIngestionErrorDetails() {
 		return errorDetailRepository.count();
+	}
+
+	public Long getETLErrorDetails() {
+		return etlErrorDetailRepository.count();
+	}
+
+	public Long getETLSucessCount() {
+		return etlFileRepository.count();
 	}
 
 	/**
@@ -61,10 +77,15 @@ public class StatisticsService {
 	 *
 	 * @return The result set containing error_detail and its count.
 	 */
-	public List<Map<String, Long>> getCountGroupedByErrorDetail() {
+	public List<Map<String, Long>> getIngestionErrorByErrorDetail() {
 		return errorDetailRepository.getCountGroupedByErrorDetail();
 	}
 
+	public List<Map<String, Long>> getETLErrorByErrorDetail() {
+		return etlErrorDetailRepository.getCountGroupedByErrorDetail();
+	}
+
+	
 	/**
 	 * Get count of rows from public.rss_digest table.
 	 *

@@ -1,6 +1,6 @@
 package com.configuration.rest.dto;
 
-public class StatisticsDTO {
+public class IngestionStatisticsDTO {
 
 	private Long success;
 
