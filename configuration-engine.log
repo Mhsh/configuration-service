@@ -909,3 +909,54 @@ Caused by: java.net.ConnectException: Connection refused
 	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
 	... 49 common frames omitted
+2023-11-23 12:55:47.219 [main] INFO  c.c.ConfigurationApplication - Starting ConfigurationApplication using Java 17.0.8 on Maheshs-MacBook-Pro.local with PID 11916 (/Users/my/work/configuration-service/target/classes started by my in /Users/my/work/configuration-service)
+2023-11-23 12:55:47.221 [main] INFO  c.c.ConfigurationApplication - No active profile set, falling back to 1 default profile: "default"
+2023-11-23 12:55:47.447 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-23 12:55:47.489 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 13 JPA repository interfaces.
+2023-11-23 12:55:47.738 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2023-11-23 12:55:47.741 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2023-11-23 12:55:47.742 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-11-23 12:55:47.742 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2023-11-23 12:55:47.787 [main] INFO  o.a.c.c.C.[.[localhost].[/config] - Initializing Spring embedded WebApplicationContext
+2023-11-23 12:55:47.787 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 538 ms
+2023-11-23 12:55:47.861 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-23 12:55:47.889 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-23 12:55:47.942 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-23 12:55:47.974 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-11-23 12:55:48.075 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-11-23 12:55:48.083 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-11-23 12:55:48.466 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-23 12:55:48.471 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-23 12:55:49.057 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/config'
+2023-11-23 12:55:49.061 [main] INFO  c.c.ConfigurationApplication - Started ConfigurationApplication in 1.98 seconds (JVM running for 2.188)
+2023-11-23 12:55:49.071 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-23 12:55:49.071 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-11-23 12:55:49.073 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-12-11 17:37:11.713 [main] INFO  c.c.ConfigurationApplication - Starting ConfigurationApplication using Java 17.0.8 on Maheshs-MacBook-Pro.local with PID 12971 (/Users/my/work/configuration-service/target/classes started by my in /Users/my/work/configuration-service)
+2023-12-11 17:37:11.717 [main] INFO  c.c.ConfigurationApplication - No active profile set, falling back to 1 default profile: "default"
+2023-12-11 17:37:12.083 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-12-11 17:37:12.153 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65 ms. Found 13 JPA repository interfaces.
+2023-12-11 17:37:12.501 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2023-12-11 17:37:12.506 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2023-12-11 17:37:12.508 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-12-11 17:37:12.508 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2023-12-11 17:37:12.567 [main] INFO  o.a.c.c.C.[.[localhost].[/config] - Initializing Spring embedded WebApplicationContext
+2023-12-11 17:37:12.568 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 812 ms
+2023-12-11 17:37:12.667 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-12-11 17:37:12.694 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-12-11 17:37:12.772 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-12-11 17:37:12.823 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-12-11 17:37:12.938 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-12-11 17:37:12.952 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-12-11 17:37:13.488 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-12-11 17:37:13.493 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-12-11 17:37:14.260 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2023-12-11 17:37:14.274 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/config'
+2023-12-11 17:37:14.281 [main] INFO  c.c.ConfigurationApplication - Started ConfigurationApplication in 2.953 seconds (JVM running for 3.515)
+2023-12-11 17:37:31.312 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[.[localhost].[/config] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-11 17:37:31.312 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-12-11 17:37:31.313 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-12-11 17:47:55.024 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m41s893ms).
+2023-12-11 18:06:57.671 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m2s648ms).
+2023-12-11 18:27:56.308 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m58s636ms).
+2023-12-11 18:28:54.416 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s109ms).

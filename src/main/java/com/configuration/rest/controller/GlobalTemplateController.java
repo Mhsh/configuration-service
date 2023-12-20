@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.configuration.rest.dto.SubscriptionTemplateDTO;
+import com.configuration.rest.dto.TemplateDTO;
 import com.configuration.rest.service.TemplateService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,7 +43,7 @@ public class GlobalTemplateController {
 	 */
 	@GetMapping("/{id}")
 	@Operation(tags = { "Templates" })
-	public SubscriptionTemplateDTO getTemplateById(@PathVariable String id) {
+	public TemplateDTO getTemplateById(@PathVariable String id) {
 		return templateService.getTemplateById(id);
 	}
 
@@ -54,7 +54,7 @@ public class GlobalTemplateController {
 	 */
 	@GetMapping
 	@Operation(tags = { "Templates" })
-	public List<SubscriptionTemplateDTO> getAllTemplates() {
+	public List<TemplateDTO> getAllTemplates() {
 		return templateService.getAllTemplates();
 	}
 
@@ -66,7 +66,7 @@ public class GlobalTemplateController {
 	 */
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Operation(tags = { "Templates" })
-	public SubscriptionTemplateDTO createTemplate(@RequestBody SubscriptionTemplateDTO templateDTO) {
+	public TemplateDTO createTemplate(@RequestBody TemplateDTO templateDTO) {
 		return templateService.createTemplate(templateDTO);
 	}
 
@@ -80,8 +80,8 @@ public class GlobalTemplateController {
 	 */
 	@PutMapping("/{id}")
 	@Operation(tags = { "Templates" })
-	public SubscriptionTemplateDTO updateTemplate(@PathVariable String id,
-			@RequestBody SubscriptionTemplateDTO updatedTemplateDTO) {
+	public TemplateDTO updateTemplate(@PathVariable String id,
+			@RequestBody TemplateDTO updatedTemplateDTO) {
 		return templateService.updateTemplate(id, updatedTemplateDTO);
 	}
 

@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.configuration.rest.dto.SubscriptionTemplateDTO;
-import com.configuration.rest.mapper.SubscriptionTemplateMapper;
+import com.configuration.rest.dto.TemplateDTO;
+import com.configuration.rest.mapper.TemplateMapper;
 import com.storage.jpa.JpaTemplate;
 import com.storage.repository.JpaTemplateRepository;
 
@@ -18,7 +18,7 @@ import com.storage.repository.JpaTemplateRepository;
 public class TemplateService {
 
 	private final JpaTemplateRepository templateRepository;
-	private final SubscriptionTemplateMapper templateMapper;
+	private final TemplateMapper templateMapper;
 
 	/**
 	 * Constructs a new TemplateService with the specified template repository and
@@ -29,7 +29,7 @@ public class TemplateService {
 	 * @param templateMapper     The TemplateMapper used for mapping between DTOs
 	 *                           and entities.
 	 */
-	public TemplateService(JpaTemplateRepository templateRepository, SubscriptionTemplateMapper templateMapper) {
+	public TemplateService(JpaTemplateRepository templateRepository, TemplateMapper templateMapper) {
 		this.templateRepository = templateRepository;
 		this.templateMapper = templateMapper;
 	}
@@ -39,7 +39,7 @@ public class TemplateService {
 	 *
 	 * @return A list of all template DTOs.
 	 */
-	public List<SubscriptionTemplateDTO> getAllTemplates() {
+	public List<TemplateDTO> getAllTemplates() {
 		List<JpaTemplate> templates = templateRepository.findAll();
 		return templates.stream().map(templateMapper::toDto).collect(Collectors.toList());
 	}
@@ -50,7 +50,7 @@ public class TemplateService {
 	 * @param id The ID of the template to retrieve.
 	 * @return The template DTO if found, or null if not found.
 	 */
-	public SubscriptionTemplateDTO getTemplateById(String id) {
+	public TemplateDTO getTemplateById(String id) {
 		JpaTemplate template = templateRepository.findById(id).orElse(null);
 		return (template != null) ? templateMapper.toDto(template) : null;
 	}
@@ -61,7 +61,7 @@ public class TemplateService {
 	 * @param templateDTO The template DTO to be created.
 	 * @return The created template DTO.
 	 */
-	public SubscriptionTemplateDTO createTemplate(SubscriptionTemplateDTO templateDTO) {
+	public TemplateDTO createTemplate(TemplateDTO templateDTO) {
 		JpaTemplate template = templateMapper.toEntity(templateDTO);
 		template = templateRepository.save(template);
 		return templateMapper.toDto(template);
@@ -75,7 +75,7 @@ public class TemplateService {
 	 * @return The updated template DTO if it exists, or null if the template with
 	 *         the given ID is not found.
 	 */
-	public SubscriptionTemplateDTO updateTemplate(String id, SubscriptionTemplateDTO updatedTemplateDTO) {
+	public TemplateDTO updateTemplate(String id, TemplateDTO updatedTemplateDTO) {
 		JpaTemplate existingTemplate = templateRepository.findById(id).orElse(null);
 		if (existingTemplate != null) {
 			JpaTemplate updatedTemplate = templateMapper.toEntity(updatedTemplateDTO);

@@ -80,7 +80,6 @@
 					<descriptors>
 						<descriptor>src/assembly/assembly.xml</descriptor>
 					</descriptors>
-
 					<finalName>${project.artifactId}-executable</finalName>
 					<outputDirectory>${project.build.directory}/assembly</outputDirectory>
 				</configuration>
